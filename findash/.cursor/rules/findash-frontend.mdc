@@ -1,0 +1,36 @@
+﻿---
+description: FinDash Angular frontend conventions for standalone components and Hebrew RTL UI
+globs: frontend/**/*
+alwaysApply: false
+---
+
+# FinDash Frontend Rules
+
+## Architecture
+- Standalone Angular 17 components only
+- HTTP calls: `src/app/api.service.ts` (do not call HttpClient from components directly)
+- Types: `src/app/models.ts`
+- Routes: `src/app/app.routes.ts`
+- Screens: `accounts-list/`, `account-detail/`
+
+## Code style
+- Identifiers in English; UI text in Hebrew (RTL)
+- Match existing CSS patterns in component `.css` files
+- No external UI/chart libraries unless approved â€” use simple CSS for visuals
+
+## API integration
+- Backend base URL: `http://localhost:3000/api` (in `api.service.ts`)
+- When backend adds an endpoint, add matching method in `api.service.ts` and types in `models.ts`
+
+## Display
+- Format money with `Intl.NumberFormat('he-IL', { style: 'currency', currency })`
+- Use account `currency` field (ILS, USD, etc.)
+- Deposits: green badge "×”×¤×§×“×”"; withdrawals: red badge "×ž×©×™×›×”"
+
+## After changes
+1. Run `npm run build` in `frontend/` to catch compile errors
+2. Verify in browser at http://localhost:4200 when possible
+
+## Do not
+- Upgrade Angular major version without approval
+- Add NgModules or non-standalone patterns

@@ -1,0 +1,14 @@
+/* סגנונות גלובליים */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', 'Rubik', 'Assistant', Arial, sans-serif;
+  background: #f0f2f5;
+  color: #1a1a1a;
+  direction: rtl;
+}

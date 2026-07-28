@@ -1,0 +1,26 @@
+[
+  {
+    "id": "acc-1001",
+    "ownerName": "דנה כהן",
+    "type": "checking",
+    "currency": "ILS",
+    "openingBalance": 5000,
+    "iban": "IL62 0108 0000 0009 9999 999"
+  },
+  {
+    "id": "acc-1002",
+    "ownerName": "יוסי לוי",
+    "type": "savings",
+    "currency": "ILS",
+    "openingBalance": 12000,
+    "iban": "IL27 0108 0000 0008 8888 888"
+  },
+  {
+    "id": "acc-1003",
+    "ownerName": "Global Trade Ltd",
+    "type": "business",
+    "currency": "USD",
+    "openingBalance": 25000,
+    "iban": "IL15 0108 0000 0007 7777 777"
+  }
+]

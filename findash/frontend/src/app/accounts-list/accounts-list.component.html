@@ -1,0 +1,20 @@
+<h1 class="page-title">החשבונות שלי</h1>
+
+<div *ngIf="loading" class="state">טוען חשבונות...</div>
+<div *ngIf="error" class="state error">{{ error }}</div>
+
+<div class="accounts-grid" *ngIf="!loading && !error">
+  <a
+    class="account-card"
+    *ngFor="let account of accounts"
+    [routerLink]="['/accounts', account.id]"
+  >
+    <div class="account-top">
+      <span class="account-type">{{ typeLabel(account.type) }}</span>
+      <span class="account-currency">{{ account.currency }}</span>
+    </div>
+    <div class="account-owner">{{ account.ownerName }}</div>
+    <div class="account-iban">{{ account.iban }}</div>
+    <div class="account-link">צפייה בתנועות ←</div>
+  </a>
+</div>

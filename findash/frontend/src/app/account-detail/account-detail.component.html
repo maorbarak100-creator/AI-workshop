@@ -1,0 +1,52 @@
+<a routerLink="/" class="back-link">→ חזרה לרשימת החשבונות</a>
+
+<div *ngIf="error" class="state error">{{ error }}</div>
+
+<div *ngIf="account" class="account-header">
+  <div>
+    <h1 class="owner">{{ account.ownerName }}</h1>
+    <div class="iban">{{ account.iban }}</div>
+  </div>
+  <div class="balance-box" *ngIf="balance">
+    <div class="balance-label">יתרה נוכחית</div>
+    <div class="balance-value">{{ formatAmount(balance.balance, balance.currency) }}</div>
+    <div class="balance-count">{{ balance.transactionCount }} תנועות</div>
+  </div>
+</div>
+
+<h2 class="section-title" *ngIf="!loading">תנועות</h2>
+
+<div *ngIf="loading" class="state">טוען תנועות...</div>
+
+<table class="txn-table" *ngIf="!loading && transactions.length">
+  <thead>
+    <tr>
+      <th>תאריך</th>
+      <th>תיאור</th>
+      <th>קטגוריה</th>
+      <th>סוג</th>
+      <th>סכום</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let txn of transactions">
+      <td class="date">{{ txn.date }}</td>
+      <td>{{ txn.description }}</td>
+      <td>{{ categoryLabel(txn.category) }}</td>
+      <td>
+        <span class="badge" [class.deposit]="txn.type === 'deposit'" [class.withdrawal]="txn.type === 'withdrawal'">
+          {{ txn.type === 'deposit' ? 'הפקדה' : 'משיכה' }}
+        </span>
+      </td>
+      <td
+        class="amount"
+        [class.pos]="txn.type === 'deposit'"
+        [class.neg]="txn.type === 'withdrawal'"
+      >
+        {{ txn.type === 'withdrawal' ? '-' : '+' }}{{ formatAmount(txn.amount, account?.currency || 'ILS') }}
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!loading && !transactions.length && !error" class="state">אין תנועות בחשבון זה.</div>

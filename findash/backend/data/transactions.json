@@ -1,0 +1,21 @@
+[
+  { "id": "txn-1", "accountId": "acc-1001", "date": "2026-01-10", "type": "deposit", "amount": 8000, "category": "salary", "description": "משכורת ינואר" },
+  { "id": "txn-2", "accountId": "acc-1001", "date": "2026-01-15", "type": "withdrawal", "amount": 1200, "category": "rent", "description": "שכר דירה" },
+  { "id": "txn-3", "accountId": "acc-1001", "date": "2026-01-20", "type": "withdrawal", "amount": 350, "category": "groceries", "description": "סופרמרקט" },
+  { "id": "txn-4", "accountId": "acc-1001", "date": "2026-02-10", "type": "deposit", "amount": 8000, "category": "salary", "description": "משכורת פברואר" },
+  { "id": "txn-5", "accountId": "acc-1001", "date": "2026-02-15", "type": "withdrawal", "amount": 1200, "category": "rent", "description": "שכר דירה" },
+  { "id": "txn-6", "accountId": "acc-1001", "date": "2026-02-22", "type": "withdrawal", "amount": 500, "category": "electronics", "description": "אוזניות" },
+  { "id": "txn-7", "accountId": "acc-1001", "date": "2026-03-10", "type": "deposit", "amount": 8000, "category": "salary", "description": "משכורת מרץ" },
+  { "id": "txn-8", "accountId": "acc-1001", "date": "2026-03-15", "type": "withdrawal", "amount": 1200, "category": "rent", "description": "שכר דירה" },
+
+  { "id": "txn-9", "accountId": "acc-1002", "date": "2026-01-05", "type": "deposit", "amount": 2000, "category": "transfer", "description": "העברה מחשבון עו\"ש" },
+  { "id": "txn-10", "accountId": "acc-1002", "date": "2026-02-05", "type": "deposit", "amount": 1500, "category": "interest", "description": "ריבית זכות" },
+  { "id": "txn-11", "accountId": "acc-1002", "date": "2026-02-18", "type": "withdrawal", "amount": 3000, "category": "car", "description": "תיקון רכב" },
+  { "id": "txn-12", "accountId": "acc-1002", "date": "2026-03-05", "type": "deposit", "amount": 2000, "category": "transfer", "description": "העברה מחשבון עו\"ש" },
+
+  { "id": "txn-13", "accountId": "acc-1003", "date": "2026-01-12", "type": "deposit", "amount": 10000, "category": "invoice", "description": "תשלום לקוח #A-104" },
+  { "id": "txn-14", "accountId": "acc-1003", "date": "2026-01-25", "type": "withdrawal", "amount": 4000, "category": "supplier", "description": "תשלום לספק" },
+  { "id": "txn-15", "accountId": "acc-1003", "date": "2026-02-01", "type": "withdrawal", "amount": 2500, "category": "payroll", "description": "משכורות עובדים" },
+  { "id": "txn-16", "accountId": "acc-1003", "date": "2026-02-14", "type": "deposit", "amount": 8000, "category": "invoice", "description": "תשלום לקוח #A-118" },
+  { "id": "txn-17", "accountId": "acc-1003", "date": "2026-03-03", "type": "withdrawal", "amount": 4000, "category": "supplier", "description": "תשלום לספק" }
+]

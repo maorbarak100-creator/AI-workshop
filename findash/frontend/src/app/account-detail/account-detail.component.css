@@ -1,0 +1,138 @@
+.back-link {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: #4f8cff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.state {
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+}
+
+.state.error {
+  color: #c62828;
+  background: #ffebee;
+  border-radius: 8px;
+}
+
+.account-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.owner {
+  font-size: 1.6rem;
+  color: #0d1b2a;
+  margin: 0 0 0.3rem;
+}
+
+.iban {
+  color: #888;
+  font-size: 0.85rem;
+  direction: ltr;
+  text-align: right;
+}
+
+.balance-box {
+  text-align: center;
+  background: #0d1b2a;
+  color: #fff;
+  border-radius: 10px;
+  padding: 1rem 2rem;
+}
+
+.balance-label {
+  font-size: 0.85rem;
+  color: #9aa7b4;
+}
+
+.balance-value {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin: 0.2rem 0;
+}
+
+.balance-count {
+  font-size: 0.8rem;
+  color: #9aa7b4;
+}
+
+.section-title {
+  font-size: 1.3rem;
+  color: #0d1b2a;
+  margin-bottom: 1rem;
+}
+
+.txn-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.txn-table th,
+.txn-table td {
+  padding: 0.9rem 1rem;
+  text-align: right;
+  border-bottom: 1px solid #eee;
+}
+
+.txn-table th {
+  background: #f5f7fa;
+  color: #555;
+  font-size: 0.85rem;
+}
+
+.txn-table .date {
+  direction: ltr;
+  text-align: right;
+  color: #888;
+  font-size: 0.9rem;
+}
+
+.badge {
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.badge.deposit {
+  background: #e6f4ea;
+  color: #1e7e34;
+}
+
+.badge.withdrawal {
+  background: #fdecea;
+  color: #c62828;
+}
+
+.amount {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.amount.pos {
+  color: #1e7e34;
+}
+
+.amount.neg {
+  color: #c62828;
+}

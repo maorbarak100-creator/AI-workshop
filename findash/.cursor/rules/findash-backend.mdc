@@ -1,0 +1,39 @@
+﻿---
+description: FinDash backend API conventions for Node.js Express services
+globs: backend/**/*
+alwaysApply: false
+---
+
+# FinDash Backend Rules
+
+## Architecture
+- Routes and middleware: `src/app.js`
+- Business logic: `src/services/` (never put logic directly in route handlers)
+- Data access: `src/repository.js`
+- Seed data: `data/*.json` (in-memory; no database)
+
+## Code style
+- CommonJS: `require` / `module.exports`
+- Identifiers in English; comments and JSDoc in Hebrew
+- Every new function must have JSDoc with `@param` and `@returns`
+- API paths under `/api/...`
+
+## Domain rules
+- Transaction types: `deposit` | `withdrawal`
+- Amounts stored as positive numbers; type determines direction
+- Return `404` with `{ error: "..." }` for missing accounts
+- Return `400` for invalid request bodies
+
+## Testing
+- Use built-in `node:test` and `node:assert`
+- Run: `npm test` from `backend/`
+- Add or update tests for every bug fix and new endpoint
+
+## After changes
+1. Run `npm test`
+2. Start server and hit affected endpoint
+3. Confirm frontend still works if API shape changed
+
+## Do not
+- Add databases, ORMs, or auth unless explicitly requested
+- Add external npm packages without approval

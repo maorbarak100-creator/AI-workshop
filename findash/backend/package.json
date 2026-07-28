@@ -1,0 +1,17 @@
+{
+  "name": "findash-backend",
+  "version": "1.0.0",
+  "description": "FinDash - a mock finance dashboard API for AI-agent training",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "test": "node --test"
+  },
+  "keywords": ["finance", "training", "demo"],
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}

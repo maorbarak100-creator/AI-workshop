@@ -1,0 +1,81 @@
+.page-title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #0d1b2a;
+}
+
+.state {
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+}
+
+.state.error {
+  color: #c62828;
+  background: #ffebee;
+  border-radius: 8px;
+}
+
+.accounts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.2rem;
+}
+
+.account-card {
+  display: block;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.3rem;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.account-card:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  border-color: #4f8cff;
+}
+
+.account-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.account-type {
+  background: #e8f0fe;
+  color: #1a56db;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.account-currency {
+  color: #999;
+  font-size: 0.85rem;
+}
+
+.account-owner {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0d1b2a;
+  margin-bottom: 0.4rem;
+}
+
+.account-iban {
+  font-size: 0.8rem;
+  color: #888;
+  direction: ltr;
+  text-align: right;
+  margin-bottom: 1rem;
+}
+
+.account-link {
+  color: #4f8cff;
+  font-weight: 600;
+  font-size: 0.9rem;
+}

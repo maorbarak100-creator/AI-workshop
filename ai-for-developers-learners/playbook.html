@@ -1,0 +1,1150 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>פלייבוק תרגילים: יום 1 + יום 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --accent:        #FF7A4D;
+  --accent-deep:   #FF5A1F;
+  --accent-soft:   #FFF5F0;
+  --accent-mid:    #FFE4D6;
+  --ink:           #2A2A2A;
+  --ink-soft:      #5A5A5A;
+  --muted:         #9A9A9A;
+  --border:        #F0EBE6;
+  --bg:            #FFFBFA;
+  --surface:       #FFFFFF;
+  --surface-alt:   #FFF8F5;
+  --stripe:        rgba(255, 90, 31, 0.035);
+  --mono:          "JetBrains Mono", ui-monospace, monospace;
+  --sans:          "Heebo", system-ui, sans-serif;
+  --sidebar-w:     280px;
+  --radius:        10px;
+  --shadow:        0 1px 0 rgba(42, 42, 42, 0.04);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+.en {
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-family: var(--mono);
+  font-size: 0.88em;
+}
+
+code, pre {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: left;
+  font-family: var(--mono);
+}
+
+.app { display: flex; min-height: 100vh; }
+
+/* ---------- SIDEBAR ---------- */
+aside.nav {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  border-left: 1px solid var(--border);
+  padding: 28px 18px 80px;
+  overflow-y: auto;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+}
+
+.nav .brand {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin-bottom: 6px;
+}
+
+.nav .brand-sub {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 28px;
+  line-height: 1.4;
+}
+
+.nav-group { margin-bottom: 22px; }
+
+.nav-group-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+  padding: 0 10px;
+}
+
+.nav a {
+  display: block;
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-size: 13.5px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  margin-bottom: 2px;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1.35;
+}
+
+.nav a:hover {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+.nav a.active {
+  background: var(--accent-deep);
+  color: #fff;
+  font-weight: 500;
+}
+
+.nav a .num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  margin-left: 6px;
+}
+
+.nav a.active .num { color: #FFE4D6; }
+
+/* ---------- MAIN ---------- */
+main {
+  flex: 1;
+  min-width: 0;
+  padding: 40px 48px 120px;
+  max-width: 860px;
+}
+
+.hero {
+  margin-bottom: 48px;
+  padding: 36px 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--stripe) 0px,
+    var(--stripe) 1px,
+    transparent 1px,
+    transparent 10px
+  );
+}
+
+.hero .kicker {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  max-width: 36em;
+}
+
+.day-banner {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 56px 0 28px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--accent-mid);
+}
+
+.day-banner .tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--accent-deep);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.day-banner h2 {
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+section.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 28px 32px;
+  margin-bottom: 22px;
+  box-shadow: var(--shadow);
+  scroll-margin-top: 24px;
+}
+
+section.card.intro {
+  background: var(--surface-alt);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin-bottom: 18px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.meta strong { color: var(--ink); font-weight: 500; }
+
+.badge {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-mid);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+h3.title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 22px 0 10px;
+  color: var(--ink);
+}
+
+p { margin-bottom: 12px; color: var(--ink); }
+
+ul, ol {
+  margin: 0 0 14px 0;
+  padding-right: 1.35em;
+}
+
+li { margin-bottom: 8px; color: var(--ink); }
+li::marker { color: var(--accent); }
+
+blockquote {
+  margin: 14px 0;
+  padding: 14px 18px;
+  background: var(--accent-soft);
+  border-right: 3px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  color: var(--ink);
+  font-size: 0.98rem;
+}
+
+blockquote p { margin-bottom: 0; }
+
+.takeaway {
+  margin-top: 22px;
+  padding: 16px 18px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.takeaway .label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin-bottom: 8px;
+}
+
+.takeaway ul { margin-bottom: 0; }
+
+.try-also {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px dashed var(--accent-mid);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.try-also .label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 18px;
+  font-size: 14px;
+  background: var(--surface);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 10px 12px;
+  text-align: right;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--surface-alt);
+  font-weight: 500;
+}
+
+td code, p code, li code {
+  background: var(--accent-soft);
+  color: var(--ink);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.86em;
+}
+
+.next {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.next a {
+  color: var(--accent-deep);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.next a:hover { text-decoration: underline; }
+
+.tip-box {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+@media (max-width: 900px) {
+  .app { flex-direction: column; }
+  aside.nav {
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-left: none;
+    border-bottom: 1px solid var(--border);
+    max-height: 240px;
+  }
+  main { padding: 24px 18px 80px; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<aside class="nav" id="sidebar">
+  <div class="brand">AI for Developers</div>
+
+  <div class="nav-group">
+    <div class="nav-group-title">תרגיל 1</div>
+    <a href="#d1-intro"><span class="num">00</span> פתיחה</a>
+    <a href="#ex1-01"><span class="num">01</span> עבודה עם Agent</a>
+    <a href="#ex1-02"><span class="num">02</span> הבנת Codebase</a>
+    <a href="#ex1-03"><span class="num">03</span> פיתוח פיצ'ר</a>
+    <a href="#ex1-04"><span class="num">04</span> תיקון באג</a>
+    <a href="#ex1-05"><span class="num">05</span> Review וטסטים</a>
+    <a href="#ex1-06"><span class="num">06</span> Rules</a>
+    <a href="#ex1-07"><span class="num">07</span> לחבר הכל</a>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-group-title">תרגיל 2</div>
+    <a href="#d2-intro"><span class="num">00</span> פתיחה</a>
+    <a href="#ex2-00"><span class="num">0</span> הכנה</a>
+    <a href="#ex2-01"><span class="num">1</span> Clone מ-GitHub</a>
+    <a href="#ex2-02"><span class="num">2</span> ארכיטקטורה</a>
+    <a href="#ex2-03"><span class="num">3</span> תיקון באג</a>
+    <a href="#ex2-04"><span class="num">4</span> Work Item</a>
+    <a href="#ex2-05"><span class="num">5</span> מימוש פיצ'ר</a>
+    <a href="#ex2-06"><span class="num">6</span> שיפור יומיומי</a>
+  </div>
+</aside>
+
+<main>
+
+  <header class="hero">
+    <div class="kicker">Vibe Coding</div>
+    <h1>פלייבוק תרגילים</h1>
+  </header>
+
+  <!-- ========== DAY 1 ========== -->
+  <div class="day-banner" id="day1">
+    <span class="tag">Day 1</span>
+    <h2>תרגילים מעשיים</h2>
+  </div>
+
+  <section class="card intro" id="d1-intro">
+    <h3 class="title">יום 1 - תרגילים מעשיים</h3>
+    <p>התרגילים האלה מתרגלים כל אחד מהנושאים שלמדנו בבוקר, בתוך Cursor. הם קצרים בכוונה - המטרה היא לצבור ביטחון בעבודה עם agent, לא לבנות מוצר.</p>
+
+    <h4>איך עובדים</h4>
+    <ol>
+      <li>פתחו את Cursor בתיקיית סביבת ההדרכה.</li>
+      <li>פתחו את חלונית ה-Chat/Agent (ברירת מחדל: <span class="en">Ctrl+I</span> / <span class="en">Cmd+I</span>).</li>
+      <li>ודאו שאתם במצב <strong>Agent</strong> (ולא Chat/Ask בלבד).</li>
+      <li>בצעו את התרגילים לפי הסדר. לכל תרגיל: מטרה, שלבים, ו"מה למדנו".</li>
+    </ol>
+
+    <h4>רשימת התרגילים</h4>
+    <table>
+      <thead>
+        <tr><th>#</th><th>תרגיל</th><th>נושא</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td><a href="#ex1-01">עבודה עם Agent</a></td><td>עבודה ראשונה עם agent</td></tr>
+        <tr><td>2</td><td><a href="#ex1-02">הבנת Codebase</a></td><td>הבנת codebase</td></tr>
+        <tr><td>3</td><td><a href="#ex1-03">פיתוח פיצ'ר</a></td><td>פיתוח פיצ'ר קטן</td></tr>
+        <tr><td>4</td><td><a href="#ex1-04">תיקון באג</a></td><td>מציאה ותיקון באג</td></tr>
+        <tr><td>5</td><td><a href="#ex1-05">Review וטסטים</a></td><td>Review וכתיבת טסטים</td></tr>
+        <tr><td>6</td><td><a href="#ex1-06">Rules</a></td><td>התאמה אישית (Rules)</td></tr>
+        <tr><td>7</td><td><a href="#ex1-07">לחבר הכל</a></td><td>לחבר הכל</td></tr>
+      </tbody>
+    </table>
+
+    <div class="tip-box">
+      <strong>טיפ כללי לכל התרגילים</strong>
+      <p style="margin:8px 0 0">זכרו את הכלל מהבוקר: <strong>Context זה הכל</strong>. ככל שתסבירו טוב יותר מה אתם רוצים ותצרפו את הקבצים הרלוונטיים - כך התוצאה תהיה טובה יותר. וגם: <strong>אתם ה-Reviewer</strong> - תמיד קראו את מה שה-agent הציע לפני שאתם מאשרים.</p>
+    </div>
+  </section>
+
+  <!-- EX1-01 -->
+  <section class="card" id="ex1-01">
+    <div class="meta">
+      <span class="badge">תרגיל 1</span>
+      <span><strong>נושא:</strong> עבודה עם agent, prompt טוב, קריאת הפלט.</span>
+    </div>
+    <h3 class="title">תרגיל 1 - עבודה ראשונה עם Agent</h3>
+
+    <h4>מטרה</h4>
+    <p>להתרגל לפתוח שיחה, לנסח בקשה ברורה, ולקרוא בביקורתיות את מה שה-agent מחזיר.</p>
+
+    <h4>שלבים</h4>
+    <ol>
+      <li>פתחו את חלונית ה-Agent ב-Cursor וודאו שאתם במצב <strong>Agent</strong>.</li>
+      <li>בקשו מה-agent ליצור קובץ חדש <code>playground/greeting.js</code> עם פונקציה שמחזירה ברכת בוקר טוב בעברית לפי השעה הנוכחית.
+        <ul><li>נסחו זאת בבירור: מה הקלט, מה הפלט, איפה הקובץ.</li></ul>
+      </li>
+      <li>קראו את הקוד שה-agent יצר. שאלו את עצמכם: האם הוא עושה בדיוק מה שביקשתי?</li>
+      <li>בקשו שינוי קטן: "הוסף גם ברכת ערב טוב אחרי השעה 18:00".</li>
+      <li>שימו לב איך ה-agent מוצא את הקובץ הקודם ומעדכן אותו (Context + Tools).</li>
+    </ol>
+
+    <div class="try-also">
+      <div class="label">נסו גם</div>
+      <ul>
+        <li>שאלו את ה-agent שאלה תיאורטית: "הסבר לי בקצרה מה זה closure ב-JavaScript". שימו לב להבדל בין שאלת ידע (Chat) לבין בקשת פעולה (Agent).</li>
+        <li>נסחו את אותה בקשה פעם אחת במעורפל ("תעשה משהו עם ברכות") ופעם אחת בצורה מדויקת. השוו את התוצאות.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- EX1-02 -->
+  <section class="card" id="ex1-02">
+    <div class="meta">
+      <span class="badge">תרגיל 2</span>
+      <span><strong>נושא:</strong> שימוש ב-agent כדי להבין קוד לא מוכר.</span>
+    </div>
+    <h3 class="title">תרגיל 2 - הבנת Codebase</h3>
+
+    <h4>מטרה</h4>
+    <p>לגלות כמה מהר אפשר להבין קוד חדש כשמבקשים מה-agent להסביר - במקום לקרוא הכל לבד.</p>
+
+    <h4>שלבים</h4>
+    <ol>
+      <li>פתחו את הקובץ <code>sample-code/finance-utils.js</code> (אל תקראו אותו לעומק עדיין).</li>
+      <li>בקשו מה-agent: "הסבר לי מה הקובץ <code>finance-utils.js</code> עושה, פונקציה-פונקציה, בעברית פשוטה."</li>
+      <li>שאלו שאלת המשך ממוקדת: "איזו מהפונקציות הכי מסוכנת לשימוש ולמה?"</li>
+      <li>בקשו דוגמת שימוש: "תן לי דוגמת קוד שמשתמשת ב-<code>transactionsAbove</code> על רשימה של 3 תנועות."</li>
+      <li>בקשו סקירת מבנה: "אם היו כאן עוד 20 קבצים, איך היית ממליץ לי להתחיל להבין את הפרויקט?"</li>
+    </ol>
+
+    <div class="try-also">
+      <div class="label">נסו גם</div>
+      <ul>
+        <li>בקשו מה-agent לצייר את זרימת הנתונים בטקסט או ב-diagram.</li>
+        <li>שאלו: "האם יש כאן קוד שנראה לך חשוד או לא נכון?" (רמז: יש. נתקן אותו בתרגיל 4.)</li>
+      </ul>
+    </div>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>ה-agent הוא כלי לימוד מצוין ל-codebase לא מוכר.</li>
+        <li>שאלות ממוקדות מקבלות תשובות טובות יותר.</li>
+        <li>זהו בדיוק הכישור שנשתמש בו מחר על אפליקציה אמיתית.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- EX1-03 -->
+  <section class="card" id="ex1-03">
+    <div class="meta">
+      <span class="badge">תרגיל 3</span>
+      <span><strong>נושא:</strong> פיתוח קוד חדש עם agent, בצעדים.</span>
+    </div>
+    <h3 class="title">תרגיל 3 - פיתוח פיצ'ר קטן</h3>
+
+    <h4>מטרה</h4>
+    <p>לפתח פונקציונליות חדשה קטנה מקצה לקצה, תוך עבודה בצעדים ובדיקה תוך כדי.</p>
+
+    <h4>המשימה</h4>
+    <p>נוסיף לקובץ <code>sample-code/finance-utils.js</code> פונקציה חדשה:</p>
+    <blockquote>
+      <p><code>compoundInterest(principal, annualRate, years)</code> - שמחשבת <strong>ריבית דריבית</strong> (compound) ומחזירה את הסכום הסופי (קרן + ריבית).</p>
+    </blockquote>
+
+    <h4>שלבים</h4>
+    <ol>
+      <li>בקשו מה-agent להוסיף את הפונקציה, כולל תיעוד (JSDoc) בסגנון הפונקציות הקיימות.</li>
+      <li>בקשו שגם יעדכן את <code>module.exports</code> בהתאם.</li>
+      <li>בקשו דוגמת הרצה קטנה שמדפיסה את התוצאה עבור: קרן 10000, ריבית 5%, 3 שנים.</li>
+      <li>הריצו את הדוגמה (בקשו מה-agent להריץ אותה בטרמינל) וודאו שהתוצאה הגיונית (~11576).</li>
+      <li>בקשו מה-agent להסביר בשורה אחת מה ההבדל בין הפונקציה הזו ל-<code>simpleInterest</code>.</li>
+    </ol>
+
+    <div class="try-also">
+      <div class="label">נסו גם</div>
+      <ul>
+        <li>בקשו שיתמוך גם בתדירות היוון (חודשי/שנתי) כפרמטר אופציונלי.</li>
+        <li>שימו לב: ככל שהבקשה מדויקת יותר (חתימה, שם, סגנון) - כך התוצאה קרובה יותר לרצוי.</li>
+      </ul>
+    </div>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>עבודה בצעדים קטנים + אימות בהרצה = פחות הפתעות.</li>
+        <li>בקשה לעקוב אחרי סגנון הקוד הקיים שומרת על אחידות.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- EX1-04 -->
+  <section class="card" id="ex1-04">
+    <div class="meta">
+      <span class="badge">תרגיל 4</span>
+      <span><strong>נושא:</strong> שימוש ב-agent לאיתור ותיקון באג.</span>
+    </div>
+    <h3 class="title">תרגיל 4 - מציאה ותיקון באג</h3>
+
+    <h4>מטרה</h4>
+    <p>לתרגל את הלולאה: לשחזר בעיה → למצוא סיבה → לתקן → לאמת.</p>
+
+    <h4>הרקע</h4>
+    <p>בקובץ <code>sample-code/finance-utils.js</code> יש פונקציה <code>average</code> שאמורה להחזיר ממוצע של רשימת סכומים - אבל היא מחזירה תוצאה שגויה.</p>
+
+    <h4>שלבים</h4>
+    <ol>
+      <li>בקשו מה-agent להריץ את הפונקציה על הקלט <code>[100, 200, 300]</code> ולהגיד מה היא מחזירה.
+        <ul><li>התוצאה הצפויה: 200. מה מתקבל בפועל?</li></ul>
+      </li>
+      <li>בקשו: "מצא את הבאג בפונקציה <code>average</code> והסבר לי אותו לפני שאתה מתקן."</li>
+      <li>קראו את ההסבר. האם הוא הגיוני? (רמז: שימו לב לתנאי הלולאה.)</li>
+      <li>אשרו את התיקון, ובקשו מה-agent להריץ שוב ולאמת שהתוצאה נכונה.</li>
+      <li>בקשו: "האם יש עוד קלטים שעלולים לשבור את הפונקציה הזו?" (למשל רשימה ריקה.)</li>
+    </ol>
+
+    <div class="try-also">
+      <div class="label">נסו גם</div>
+      <ul>
+        <li>בקשו מה-agent להוסיף בדיקת קלט לרשימה ריקה.</li>
+        <li>שימו לב איך הרצת הקוד (Tool) הפכה "אני חושב שזה הבאג" ל"בדקתי, זה הבאג".</li>
+      </ul>
+    </div>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>אימות מול המציאות (הרצה) הוא המפתח לתיקון באגים אמין.</li>
+        <li>כדאי לבקש הסבר <strong>לפני</strong> התיקון - כדי לוודא שה-agent הבין נכון.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- EX1-05 -->
+  <section class="card" id="ex1-05">
+    <div class="meta">
+      <span class="badge">תרגיל 5</span>
+      <span><strong>נושא:</strong> שימוש ב-agent ל-review ולכתיבת טסטים.</span>
+    </div>
+    <h3 class="title">תרגיל 5 - Review וכתיבת טסטים</h3>
+
+    <h4>מטרה</h4>
+    <p>להשתמש ב-agent גם ככלי בקרת איכות: לבקר קוד ולכסות אותו בטסטים.</p>
+
+    <h4>חלק א' - Review</h4>
+    <ol>
+      <li>בקשו מה-agent: "עשה code review לקובץ <code>finance-utils.js</code>. ציין בעיות אפשריות, edge cases, ושיפורים - אבל אל תשנה כלום עדיין."</li>
+      <li>קראו את ההערות. עם מה אתם מסכימים? עם מה לא?</li>
+      <li>בחרו הערה אחת שאתם מסכימים איתה ובקשו ליישם רק אותה.</li>
+    </ol>
+
+    <h4>חלק ב' - טסטים</h4>
+    <ol>
+      <li>בקשו מה-agent לכתוב טסטים לפונקציות ב-<code>finance-utils.js</code> (אפשר עם <code>node:test</code> המובנה, ללא התקנות).</li>
+      <li>בקשו שהטסטים יכללו גם מקרי קצה: רשימה ריקה, מספרים שליליים, ריבית 0.</li>
+      <li>בקשו מה-agent להריץ את הטסטים ולדווח מה עובר ומה נכשל.</li>
+      <li>אם משהו נכשל - החליטו יחד עם ה-agent: האם זה באג בקוד או בטסט?</li>
+    </ol>
+
+    <div class="try-also">
+      <div class="label">נסו גם</div>
+      <ul>
+        <li>בקשו כיסוי טסטים לפונקציה <code>compoundInterest</code> שהוספתם בתרגיל 3.</li>
+      </ul>
+    </div>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>Review מ-agent הוא נקודת מבט נוספת - לא תחליף לשיפוט שלכם.</li>
+        <li>טסטים הופכים "נראה תקין" ל"מוכח שתקין", והם רשת ביטחון לשינויים עתידיים.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- EX1-06 -->
+  <section class="card" id="ex1-06">
+    <div class="meta">
+      <span class="badge">תרגיל 6</span>
+      <span><strong>נושא:</strong> הגדרת חוקים קבועים ל-agent.</span>
+    </div>
+    <h3 class="title">תרגיל 6 - התאמה אישית של Agent (Rules)</h3>
+
+    <h4>מטרה</h4>
+    <p>ללמוד להגדיר פעם אחת את הסטנדרטים של הצוות, כך שה-agent יעבוד לפיהם אוטומטית.</p>
+
+    <h4>רקע</h4>
+    <p>במקום לחזור על אותן הנחיות בכל שיחה ("כתוב בעברית", "השתמש ב-async/await", "אל תשתמש בספרייה X"), אפשר להגדיר <strong>Rules</strong> שה-agent מקבל תמיד: קבצים בתיקייה <code>.cursor/rules/</code>.</p>
+
+    <h4>שלבים</h4>
+    <ol>
+      <li>בקשו מה-agent ליצור כלל חדש <code>.cursor/rules/my-team.mdc</code> עם הכללים הבאים (התאימו לטעמכם):
+        <ul>
+          <li>קוד JavaScript מודרני (ES modules / async-await).</li>
+          <li>שמות משתנים ופונקציות באנגלית, הערות בעברית.</li>
+          <li>כל פונקציה חדשה מתועדת ב-JSDoc.</li>
+          <li>אין להוסיף ספריות חיצוניות בלי אישור.</li>
+        </ul>
+      </li>
+      <li>פתחו שיחה חדשה ובקשו משימת קוד קטנה (למשל: פונקציה שממירה דולר לשקל).</li>
+      <li>בדקו: האם ה-agent פעל לפי הכללים שהגדרתם? (הערות בעברית? JSDoc?)</li>
+      <li>שנו כלל אחד ב-<code>.cursor/rules/</code> ובקשו משימה נוספת - ראו שההתנהגות משתנה.</li>
+    </ol>
+
+    <div class="try-also">
+      <div class="label">נסו גם</div>
+      <ul>
+        <li>הוסיפו כלל ספציפי לדומיין: "כל סכום כספי מוצג עם 2 ספרות אחרי הנקודה ובמטבע ILS".</li>
+        <li>דונו: אילו כללים היו עוזרים לצוות שלכם בעבודה האמיתית?</li>
+      </ul>
+    </div>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>Rules (<code>.cursor/rules/</code>) + <code>AGENTS.md</code> = הדרך לגרום ל-agent לעבוד לפי הסטנדרטים שלכם.</li>
+        <li>זה חוסך חזרות ומבטיח אחידות - נשתמש בזה מחר.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- EX1-07 -->
+  <section class="card" id="ex1-07">
+    <div class="meta">
+      <span class="badge">תרגיל 7</span>
+      <span><strong>נושא:</strong> תרגיל משולב שמפעיל את כל מה שלמדנו.</span>
+    </div>
+    <h3 class="title">תרגיל 7 - לחבר הכל</h3>
+
+    <h4>מטרה</h4>
+    <p>לבצע משימה קטנה מקצה לקצה, ולהפעיל את כל הכישורים: הבנה, פיתוח, תיקון, טסטים והתאמה אישית.</p>
+
+    <h4>המשימה</h4>
+    <p>בנו מודול קטן חדש <code>sample-code/loan.js</code> שמנהל חישובי הלוואה פשוטים:</p>
+    <ol>
+      <li><strong>הבנה + תכנון:</strong> בקשו מה-agent להציע תכנית קצרה למודול שכולל:
+        <ul>
+          <li><code>monthlyPayment(principal, annualRate, months)</code> - תשלום חודשי.</li>
+          <li><code>totalRepayment(principal, annualRate, months)</code> - סך החזר כולל.</li>
+          <li><code>remainingBalance(principal, annualRate, months, paymentsMade)</code> - יתרה לאחר X תשלומים.</li>
+        </ul>
+      </li>
+      <li><strong>פיתוח:</strong> אשרו את התכנית ובקשו מימוש, לפי הכללים מ-<code>AGENTS.md</code> (תרגיל 6).</li>
+      <li><strong>בדיקה:</strong> בקשו דוגמת הרצה ואמתו שהמספרים הגיוניים.</li>
+      <li><strong>טסטים:</strong> בקשו טסטים למודול, כולל edge cases.</li>
+      <li><strong>Review:</strong> בקשו מה-agent לבקר את הקוד שלו-עצמו ולתקן בעיה אחת לפחות.</li>
+      <li><strong>תיעוד:</strong> בקשו הוספת סעיף קצר ל-README קטן שמסביר איך להשתמש במודול.</li>
+    </ol>
+
+    <h4>דיון מסכם (בקבוצה)</h4>
+    <ul>
+      <li>באילו שלבים ה-agent חסך לכם הכי הרבה זמן?</li>
+      <li>איפה נאלצתם להתערב או לתקן אותו?</li>
+      <li>מה תיקחו איתכם למחר?</li>
+    </ul>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>זרימת עבודה מלאה עם agent: תכנון → פיתוח → אימות → טסטים → review.</li>
+        <li>זה בדיוק המבנה של יום 2, רק על אפליקציה אמיתית וגדולה יותר.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ========== DAY 2 ========== -->
+  <div class="day-banner" id="day2">
+    <span class="tag">תרגיל 2</span>
+    <h2>חקירת אפליקציה אמיתית עם Agents</h2>
+  </div>
+
+  <section class="card intro" id="d2-intro">
+    <h3 class="title">תרגיל 2 - חקירת אפליקציה אמיתית עם Agents</h3>
+    <p>היום ניקח אפליקציה שלמה (FinDash), נחקור אותה, נתקן בה באג ונפתח בה פיצ'ר - <strong>הכל דרך agents ב-Cursor</strong>. המטרה: לחוות זרימת עבודה אמיתית מקצה לקצה, בדיוק כמו בעבודה היומיומית.</p>
+
+    <h4>כלל הזהב</h4>
+    <p><strong>כל פעולה נעשית דרך ה-agent ב-Cursor.</strong> לא כותבים קוד ידנית, לא מריצים פקודות ידנית בטרמינל שמחוץ ל-Cursor. אתם המנהלים - ה-agent הוא המפתח. אתם מגדירים מטרה, נותנים Context, קוראים ומאשרים.</p>
+
+    <h4>מבנה התרגיל</h4>
+    <table>
+      <thead>
+        <tr><th>שלב</th><th>שם</th><th>מה עושים</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>0</td><td><a href="#ex2-00">הכנה</a></td><td>פתיחת Cursor, התחברות ל-GitHub/Azure</td></tr>
+        <tr><td>1</td><td><a href="#ex2-01">Clone מ-GitHub</a></td><td>משיכת ה-repo מ-GitHub עם agent</td></tr>
+        <tr><td>2</td><td><a href="#ex2-02">ארכיטקטורה</a></td><td>חקירת האפליקציה ולימוד הארכיטקטורה</td></tr>
+        <tr><td>3</td><td><a href="#ex2-03">תיקון באג</a></td><td>מציאה ותיקון של באג</td></tr>
+        <tr><td>4</td><td><a href="#ex2-04">Work Item</a></td><td>משיכת ה-Work Item מ-Azure DevOps</td></tr>
+        <tr><td>5</td><td><a href="#ex2-05">מימוש פיצ'ר</a></td><td>מימוש הפיצ'ר</td></tr>
+        <tr><td>6</td><td><a href="#ex2-06">שיפור יומיומי</a></td><td>חצי שני: שפר משימה יומיומית שלך</td></tr>
+      </tbody>
+    </table>
+
+    <h4>טיפים כלליים (מיום 1)</h4>
+    <ul>
+      <li><strong>Context זה הכל</strong> - צרפו קבצים רלוונטיים, הצביעו על מיקומים ספציפיים.</li>
+      <li><strong>תנו ל-agent לאמת</strong> - שיריץ את השרת/הטסטים, לא רק "יטען".</li>
+      <li><strong>אתם ה-Reviewer</strong> - קראו כל diff לפני שמאשרים.</li>
+      <li><strong>עבדו בצעדים</strong> - משימה גדולה = כמה צעדים קטנים עם בדיקות ביניים.</li>
+    </ul>
+
+    <h4>מה צריך מהמדריך לפני שמתחילים</h4>
+    <ul>
+      <li>כתובת repo <strong>FinDash</strong> ב-GitHub (לשלב 1).</li>
+      <li>קישור ל-<strong>Work Item</strong> ב-Azure DevOps (לשלב 4).</li>
+    </ul>
+    <p>בהצלחה. מתחילים מ-<a href="#ex2-00">שלב 0 - הכנה</a>.</p>
+  </section>
+
+  <!-- EX2-00 -->
+  <section class="card" id="ex2-00">
+    <div class="meta">
+      <span class="badge">שלב 0</span>
+    </div>
+    <h3 class="title">שלב 0 - הכנה</h3>
+
+    <h4>מטרה</h4>
+    <p>לוודא שהסביבה מוכנה לפני שמתחילים לעבוד עם ה-agent.</p>
+
+    <h4>מה צריך</h4>
+    <ol>
+      <li><strong>Cursor מותקן ופתוח.</strong></li>
+      <li><strong>Node.js מותקן</strong> (גרסה 18 ומעלה). בדקו: פתחו טרמינל ב-Cursor והריצו <code>node --version</code>.</li>
+      <li><strong>Git מותקן ומוגדר</strong> עם שם ואימייל.</li>
+      <li><strong>גישה ל-GitHub</strong> - הכתובת של ה-repo שהמדריך שיתף.</li>
+      <li><strong>גישה ל-Azure DevOps</strong> - קישור ל-Board/Work Item שהמדריך יצר.</li>
+    </ol>
+
+    <h4>בדיקת מוכנות</h4>
+    <ul>
+      <li>פתחו את חלונית ה-Agent (ברירת מחדל: <span class="en">Ctrl+I</span>).</li>
+      <li>ודאו שהמצב הוא <strong>Agent</strong> (ולא Ask/Chat בלבד).</li>
+      <li>בחרו תיקייה ריקה שתשמש לעבודה היום (למשל <code>C:\work\findash</code>).</li>
+    </ul>
+
+    <h4>תזכורת חשובה</h4>
+    <p>מהרגע הזה - <strong>כל דבר עובר דרך ה-agent</strong>. גם פקודות git, גם הרצת השרת, גם עריכת קוד. זה בדיוק העניין של היום.</p>
+    <p class="next">מוכנים? עברו ל-<a href="#ex2-01">שלב 1 - Clone מ-GitHub</a>.</p>
+  </section>
+
+  <!-- EX2-01 -->
+  <section class="card" id="ex2-01">
+    <div class="meta">
+      <span class="badge">שלב 1</span>
+    </div>
+    <h3 class="title">שלב 1 - משיכת ה-Repo מ-GitHub (עם Agent)</h3>
+
+    <h4>מטרה</h4>
+    <p>להביא את קוד האפליקציה מ-GitHub למחשב - באמצעות ה-agent, בלי להריץ פקודות ידנית.</p>
+
+    <h4>שלבים</h4>
+    <ol>
+      <li>פתחו את חלונית ה-Agent.</li>
+      <li>בקשו מה-agent למשוך את ה-repo. לדוגמה (החליפו לכתובת האמיתית שהמדריך נתן):
+        <blockquote><p>"שכפל (clone) את ה-repo מהכתובת <code>https://github.com/&lt;org&gt;/findash</code> לתיקייה הנוכחית, ולאחר מכן פתח אותה."</p></blockquote>
+      </li>
+      <li>תנו ל-agent להריץ את פקודת ה-<code>git clone</code> בטרמינל. שימו לב איך הוא מדווח על ההצלחה.</li>
+      <li>בקשו מה-agent להתקין את התלויות:
+        <blockquote><p>"התקן את התלויות של ה-backend ושל ה-frontend."</p></blockquote>
+      </li>
+      <li>בקשו להריץ את שני החלקים ולוודא שהם עולים:
+        <blockquote><p>"הרץ את ה-backend ואת ה-frontend, ואמת שהאפליקציה עובדת. תן לי את הכתובת לפתיחה בדפדפן."</p></blockquote>
+      </li>
+      <li>פתחו בדפדפן את <span class="en">http://localhost:4200</span> - אתם אמורים לראות את רשימת החשבונות.</li>
+    </ol>
+
+    <h4>נקודות לתשומת לב</h4>
+    <ul>
+      <li>אם ה-clone נכשל - בדקו את הכתובת ואת ההרשאות (ייתכן שצריך התחברות ל-GitHub).</li>
+      <li>שימו לב שה-agent מזהה שיש שתי תיקיות (<code>backend</code>, <code>frontend</code>) וכל אחת דורשת <code>npm install</code> נפרד. אם לא - הזכירו לו.</li>
+    </ul>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>ה-agent יכול לנהל פעולות git ותפעול (setup) - לא רק לכתוב קוד.</li>
+        <li>כבר בשלב הזה אנחנו נותנים לו לאמת שהאפליקציה עובדת (Tool calling).</li>
+      </ul>
+    </div>
+    <p class="next">עברו ל-<a href="#ex2-02">שלב 2 - ארכיטקטורה</a>.</p>
+  </section>
+
+  <!-- EX2-02 -->
+  <section class="card" id="ex2-02">
+    <div class="meta">
+      <span class="badge">שלב 2</span>
+    </div>
+    <h3 class="title">שלב 2 - חקירת האפליקציה ולימוד הארכיטקטורה</h3>
+
+    <h4>מטרה</h4>
+    <p>להבין codebase חדש במהירות, בעזרת ה-agent - בדיוק כמו כשמצטרפים לפרויקט חדש בעבודה.</p>
+
+    <h4>שלבים</h4>
+
+    <h4>א. תמונה כללית</h4>
+    <p>בקשו מה-agent:</p>
+    <blockquote><p>"תן לי סקירה כללית של הפרויקט הזה: מה האפליקציה עושה, מאילו חלקים היא מורכבת, ובאילו טכנולוגיות היא משתמשת."</p></blockquote>
+
+    <h4>ב. מפת ארכיטקטורה</h4>
+    <blockquote><p>"צייר לי דיאגרמת ארכיטקטורה (ב-HTML) שמראה איך ה-frontend, ה-backend והנתונים מתחברים."</p></blockquote>
+
+    <h4>ג. זרימת נתונים ספציפית</h4>
+    <p>בחרו תרחיש והבינו אותו מקצה לקצה:</p>
+    <blockquote><p>"כשמשתמש פותח מסך של חשבון ורואה את היתרה - עקוב אחרי כל הזרימה: מאיזה קומפוננטה זה מתחיל, איזה קריאת API נעשית, ואיפה בשרת מחושבת היתרה?"</p></blockquote>
+
+    <h4>ד. מיפוי ה-API</h4>
+    <blockquote><p>"רשום לי טבלה של כל ה-endpoints ב-backend: method, נתיב, ומה כל אחד מחזיר."</p></blockquote>
+
+    <h4>ה. שאלות משלכם</h4>
+    <p>שאלו לפחות שתי שאלות משלכם, למשל:</p>
+    <ul>
+      <li>"איפה מאוחסנים הנתונים ואיך הם נטענים?"</li>
+      <li>"מה יקרה אם אבקש חשבון שלא קיים?"</li>
+      <li>"איזה קוד היית משפר קודם כל, ולמה?"</li>
+    </ul>
+
+    <h4>משימת סיכום</h4>
+    <p>בקשו מה-agent:</p>
+    <blockquote><p>"צור קובץ <code>ARCHITECTURE.md</code> קצר שמסכם את מבנה הפרויקט, ה-endpoints וזרימת הנתונים המרכזית."</p></blockquote>
+    <p>קראו את הקובץ שנוצר - האם הוא מדויק? תקנו עם ה-agent מה שלא נכון.</p>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>ה-agent הופך codebase לא מוכר לנגיש תוך דקות.</li>
+        <li>שאלות ממוקדות + בקשת דיאגרמות = הבנה מהירה.</li>
+        <li>תיעוד שנוצר תוך כדי חקירה נשאר נכס לצוות.</li>
+      </ul>
+    </div>
+    <p class="next">עברו ל-<a href="#ex2-03">שלב 3 - תיקון באג</a>.</p>
+  </section>
+
+  <!-- EX2-03 -->
+  <section class="card" id="ex2-03">
+    <div class="meta">
+      <span class="badge">שלב 3</span>
+    </div>
+    <h3 class="title">שלב 3 - מציאה ותיקון של באג</h3>
+
+    <h4>הרקע (דיווח באג)</h4>
+    <blockquote>
+      <p><strong>דיווח מלקוח:</strong> "היתרה שמוצגת בחשבון שלי נראית גבוהה מדי. יש לי הרבה משיכות, אבל היתרה רק גדלה. משהו לא הגיוני בחישוב."</p>
+    </blockquote>
+    <p>המשימה שלכם: לשחזר, לאתר, לתקן ולאמת - הכל עם ה-agent.</p>
+
+    <h4>שלבים</h4>
+
+    <h4>א. שחזור הבעיה</h4>
+    <blockquote><p>"בדוק את היתרה של חשבון acc-1001 מול התנועות שלו. חשב ידנית מה היתרה אמורה להיות והשווה למה שה-API מחזיר. האם יש פער?"</p></blockquote>
+    <p>תנו ל-agent להריץ את השרת ולבצע קריאה אמיתית ל-endpoint של היתרה.</p>
+
+    <h4>ב. איתור שורש הבעיה</h4>
+    <blockquote><p>"מצא את הקוד שמחשב את היתרה, קרא אותו, והסבר לי מה הבאג - <strong>לפני</strong> שאתה מתקן."</p></blockquote>
+    <p>עצרו וקראו את ההסבר. האם הוא הגיוני? (רמז: חשבו על ההבדל בין הפקדה למשיכה.)</p>
+
+    <h4>ג. תיקון</h4>
+    <blockquote><p>"תקן את הבאג. שמור על סגנון הקוד הקיים."</p></blockquote>
+    <p>קראו את ה-diff לפני שאתם מאשרים. ודאו שאתם מבינים כל שינוי.</p>
+
+    <h4>ד. אימות</h4>
+    <blockquote><p>"הרץ שוב את חישוב היתרה עבור שלושת החשבונות ואמת שהתוצאות נכונות עכשיו."</p></blockquote>
+    <p>בדקו גם בממשק (רעננו את מסך החשבון) שהיתרה השתנתה והגיונית.</p>
+
+    <h4>ה. רשת ביטחון</h4>
+    <blockquote><p>"כתוב טסט ל-backend שמאמת את חישוב היתרה, כדי שהבאג הזה לא יחזור. הרץ את הטסטים."</p></blockquote>
+
+    <h4>משימת סגירה (Git)</h4>
+    <blockquote><p>"צור branch בשם <code>fix/balance-calculation</code>, בצע commit עם הודעה ברורה בעברית שמתארת את התיקון, ודחוף אותו."</p></blockquote>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>הלולאה המלאה: שחזור → איתור → תיקון → אימות → טסט.</li>
+        <li>אימות מול המציאות (הרצה) הוא ההבדל בין "אני חושב שתיקנתי" ל"בדקתי, תיקנתי".</li>
+        <li>הוספת טסט הופכת את התיקון לקבוע.</li>
+      </ul>
+    </div>
+    <p class="next">עברו ל-<a href="#ex2-04">שלב 4 - Work Item</a>.</p>
+  </section>
+
+  <!-- EX2-04 -->
+  <section class="card" id="ex2-04">
+    <div class="meta">
+      <span class="badge">שלב 4</span>
+    </div>
+    <h3 class="title">שלב 4 - משיכת ה-Work Item מ-Azure DevOps</h3>
+
+    <h4>מטרה</h4>
+    <p>לקבל את דרישת הפיצ'ר ממערכת ניהול המשימות (Azure DevOps), בדיוק כמו בעבודה אמיתית - ולתרגם אותה לתוכנית עבודה עם ה-agent.</p>
+
+    <h4>שלבים</h4>
+
+    <h4>א. איתור המשימה</h4>
+    <ol>
+      <li>פתחו את לוח ה-Azure DevOps (הקישור שהמדריך שיתף).</li>
+      <li>מצאו את ה-Work Item: <strong>"הוספת סיכום חודשי של הכנסות מול הוצאות למסך החשבון"</strong>.</li>
+      <li>קראו את התיאור ואת תנאי הקבלה (Acceptance Criteria).</li>
+    </ol>
+
+    <h4>ב. העברת ההקשר ל-Agent</h4>
+    <p>העתיקו את התיאור ותנאי הקבלה של ה-Work Item, והדביקו אותם ל-agent:</p>
+    <blockquote><p>"זו דרישת פיצ'ר מ-Azure DevOps. קרא אותה והצע לי תוכנית מימוש קצרה - מה צריך לשנות ב-backend, מה ב-frontend, ובאיזה סדר. אל תכתוב קוד עדיין."</p></blockquote>
+    <blockquote><p>טיפ: אם בארגון שלכם מוגדר חיבור MCP ל-Azure DevOps ב-Cursor, אפשר לבקש מה-agent למשוך את ה-Work Item ישירות לפי מזהה, במקום להעתיק ידנית. שאלו את המדריך אם זה זמין.</p></blockquote>
+
+    <h4>ג. אישור התוכנית</h4>
+    <p>קראו את התוכנית שה-agent הציע. האם היא מכסה את כל תנאי הקבלה? חדדו אם צריך:</p>
+    <blockquote><p>"ודא שהתוכנית מכסה גם את המקרה של חשבון ללא תנועות ואת החזרת 404 לחשבון לא קיים."</p></blockquote>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>דרישה טובה (עם Acceptance Criteria) = Context מצוין ל-agent.</li>
+        <li>לבקש תוכנית <strong>לפני</strong> קוד = שליטה טובה יותר בתוצאה.</li>
+      </ul>
+    </div>
+    <p class="next">עברו ל-<a href="#ex2-05">שלב 5 - מימוש פיצ'ר</a>.</p>
+  </section>
+
+  <!-- EX2-05 -->
+  <section class="card" id="ex2-05">
+    <div class="meta">
+      <span class="badge">שלב 5</span>
+    </div>
+    <h3 class="title">שלב 5 - מימוש הפיצ'ר</h3>
+
+    <h4>מטרה</h4>
+    <p>לממש את פיצ'ר "הסיכום החודשי" מקצה לקצה (backend + frontend), לפי תנאי הקבלה, עם ה-agent.</p>
+    <p>תזכורת לתנאי הקבלה (מה-Work Item):</p>
+    <ul>
+      <li>endpoint חדש <code>GET /api/accounts/:id/summary</code> שמחזיר לכל חודש: <code>month</code>, <code>income</code>, <code>expense</code>.</li>
+      <li>מסודר מהחודש המוקדם לחדש; <code>404</code> לחשבון לא קיים; טיפול בחשבון ללא תנועות.</li>
+      <li>הצגה ויזואלית במסך החשבון + טסט ל-backend.</li>
+    </ul>
+
+    <h4>שלבים מומלצים (בצעדים!)</h4>
+
+    <h4>א. Backend - הלוגיקה</h4>
+    <blockquote><p>"ממש את חישוב הסיכום החודשי ב-backend: פונקציה שמקבצת תנועות לפי חודש (YYYY-MM) ומסכמת income (הפקדות) ו-expense (משיכות)."</p></blockquote>
+
+    <h4>ב. Backend - ה-Endpoint</h4>
+    <blockquote><p>"הוסף route <code>GET /api/accounts/:id/summary</code> שמשתמש בפונקציה, כולל 404 לחשבון לא קיים."</p></blockquote>
+    <p>אמתו:</p>
+    <blockquote><p>"הרץ את השרת ובצע קריאה ל-endpoint עבור acc-1001. הראה לי את הפלט."</p></blockquote>
+    <p>(פלט צפוי: 3 חודשים - ינואר/פברואר/מרץ 2026 - עם income והוצאות לכל חודש.)</p>
+
+    <h4>ג. Backend - טסט</h4>
+    <blockquote><p>"כתוב טסט שמאמת את חישוב הסיכום עבור חשבון לדוגמה, והרץ אותו."</p></blockquote>
+
+    <h4>ד. Frontend - שירות</h4>
+    <blockquote><p>"הוסף ל-api.service מתודה getSummary, והוסף את הטיפוסים המתאימים."</p></blockquote>
+
+    <h4>ה. Frontend - תצוגה</h4>
+    <blockquote><p>"הצג במסך פרטי החשבון בלוק 'סיכום חודשי' עם תרשים עמודות פשוט (הכנסות מול הוצאות לכל חודש). אל תוסיף ספריות חיצוניות - השתמש ב-CSS."</p></blockquote>
+    <p>אמתו:</p>
+    <blockquote><p>"הרץ את ה-frontend ואת ה-backend, ותאר לי מה אמור להופיע במסך של acc-1001."</p></blockquote>
+    <p>פתחו בדפדפן וודאו שהבלוק מופיע ונכון.</p>
+
+    <h4>ו. מקרי קצה</h4>
+    <blockquote><p>"בדוק מה קורה בחשבון ללא תנועות ובחשבון לא קיים. ודא שאין שגיאה בממשק."</p></blockquote>
+
+    <h4>סגירה (Git + PR)</h4>
+    <blockquote><p>"צור branch <code>feature/monthly-summary</code>, בצע commit עם הודעה ברורה, דחוף, ופתח Pull Request (אם מוגדר בארגון). קשר אותו ל-Work Item אם אפשר."</p></blockquote>
+
+    <h4>Review עצמי</h4>
+    <blockquote><p>"עשה code review לשינויים שביצעת בפיצ'ר הזה, וציין אם משהו חסר ביחס לתנאי הקבלה."</p></blockquote>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>מימוש פיצ'ר מלא (backend + frontend + טסט) בעבודה מונחית-agent.</li>
+        <li>עבודה בצעדים עם אימות בכל שלב מפחיתה הפתעות.</li>
+        <li>סגירת המעגל: מ-Work Item ועד Pull Request.</li>
+      </ul>
+    </div>
+    <p class="next">מי שסיים - עברו לחצי השני: <a href="#ex2-06">שלב 6 - שיפור יומיומי</a>.</p>
+  </section>
+
+  <!-- EX2-06 -->
+  <section class="card" id="ex2-06">
+    <div class="meta">
+      <span class="badge">שלב 6</span>
+    </div>
+    <h3 class="title">שלב 6 (חצי שני) - שפר משימה יומיומית שלך</h3>
+
+    <h4>מטרה</h4>
+    <p>לקחת את מה שלמדנו ולהפעיל אותו על <strong>הבעיות האמיתיות שלכם</strong>. כל אחד בוחר משימה או תהליך שחוזר על עצמו בעבודה היומיומית, ומשפר אותו בעזרת agent.</p>
+    <p>זהו הבסיס להצגה למנהלים ביום 3.</p>
+
+    <h4>שלב א' - בחירת משימה</h4>
+    <p>חשבו על משהו מהעבודה שלכם שהוא: חוזר, מייגע, גוזל זמן, או מועד לטעויות. דוגמאות:</p>
+    <ul>
+      <li>כתיבת בדיקות ליחידות קוד קיימות.</li>
+      <li>יצירת תיעוד ל-API / למודול.</li>
+      <li>כתיבת סקריפט שחוזר על עצמו (למשל עיבוד קובץ, המרת פורמט).</li>
+      <li>ניסוח הודעות commit / תיאורי Pull Request.</li>
+      <li>חקירת לוגים או שגיאות.</li>
+      <li>כתיבת boilerplate לקומפוננטה/מודול חדש.</li>
+      <li>הכנת שאילתות או דוחות.</li>
+    </ul>
+    <blockquote><p>אם אתם מתקשים לבחור - שאלו את ה-agent: "אני עובד/ת כ... והמשימות היומיומיות שלי הן... איזו מהן הכי כדאי לשפר עם AI ולמה?"</p></blockquote>
+
+    <h4>שלב ב' - הגדרת "לפני"</h4>
+    <p>תעדו את המצב הנוכחי: כמה זמן זה לוקח היום? מה מייגע בזה? כתבו 2-3 שורות. זה ה"לפני" שתציגו מול ה"אחרי".</p>
+
+    <h4>שלב ג' - שיפור עם Agent</h4>
+    <p>בנו פתרון. אפשרויות:</p>
+    <ul>
+      <li><strong>אוטומציה:</strong> בקשו מה-agent לכתוב סקריפט/כלי שמבצע את המשימה.</li>
+      <li><strong>Rules / AGENTS.md:</strong> הגדירו כללים שיחסכו לכם חזרה על הנחיות (כמו בתרגיל 6 של יום 1).</li>
+      <li><strong>Prompt חוזר:</strong> נסחו prompt-תבנית שתשמש אתכם שוב ושוב למשימה הזו.</li>
+      <li><strong>תהליך:</strong> הגדירו זרימת עבודה חדשה עם ה-agent שמקצרת את המשימה.</li>
+    </ul>
+    <p>עבדו בצעדים, אמתו, ושמרו את התוצר.</p>
+
+    <h4>שלב ד' - מדידת "אחרי"</h4>
+    <ul>
+      <li>כמה זמן זה לוקח עכשיו?</li>
+      <li>מה השתפר באיכות / בעקביות?</li>
+      <li>מה עוד אפשר לשפר בהמשך?</li>
+    </ul>
+
+    <h4>שלב ה' - הכנה ליום 3</h4>
+    <p>הכינו נקודות קצרות להצגה למנהלים:</p>
+    <ul>
+      <li>מה המשימה שבחרתם ולמה.</li>
+      <li>ה"לפני" מול ה"אחרי" (עם מספרים אם אפשר).</li>
+      <li>דמו קצר של השיפור.</li>
+      <li>מה תיקחו קדימה.</li>
+    </ul>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>הערך האמיתי של agents הוא בשילוב בעבודה היומיומית, לא רק בתרגילים.</li>
+        <li>שיפור קטן שחוזר על עצמו כל יום = חיסכון עצום לאורך זמן.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+</div>
+
+<script>
+(function () {
+  const links = [...document.querySelectorAll('.nav a')];
+  const sections = links
+    .map((a) => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+
+  function setActive() {
+    const y = window.scrollY + 80;
+    let current = sections[0];
+    for (const s of sections) {
+      if (s.offsetTop <= y) current = s;
+    }
+    links.forEach((a) => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current.id);
+    });
+  }
+
+  window.addEventListener('scroll', setActive, { passive: true });
+  setActive();
+})();
+</script>
+</body>
+</html>
