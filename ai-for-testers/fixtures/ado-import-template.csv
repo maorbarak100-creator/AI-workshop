@@ -1,0 +1,6 @@
+Work Item Type,Title,Test Step,Step Action,Step Expected,Priority
+Test Case,Low Balance Alert - banner shows when balance below threshold,1,Open account acc-1001 with alert enabled and threshold 5000 while current balance is 24550,Account detail page loads without low-balance banner,2
+Test Case,Low Balance Alert - banner shows when balance below threshold,2,Lower balance below 5000 via withdrawal (or use test data) and refresh the account page,Red/orange banner appears showing current balance and threshold,2
+Test Case,Low Balance Alert - banner shows when balance below threshold,3,Click the banner close (X) control,Banner hides for the rest of the browser session,2
+Test Case,Low Balance Alert - invalid threshold rejected,1,As account owner open alert settings and set threshold to 0 then click Save,Save is blocked; validation error is shown; previous threshold remains,1
+Test Case,Low Balance Alert - invalid threshold rejected,2,Set threshold to -10 and click Save,Save is blocked; validation error is shown; previous threshold remains,1

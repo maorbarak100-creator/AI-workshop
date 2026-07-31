@@ -1,0 +1,1111 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>פלייבוק תרגילים: AI for Testers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --accent:        #FF7A4D;
+  --accent-deep:   #FF5A1F;
+  --accent-soft:   #FFF5F0;
+  --accent-mid:    #FFE4D6;
+  --ink:           #2A2A2A;
+  --ink-soft:      #5A5A5A;
+  --muted:         #9A9A9A;
+  --border:        #F0EBE6;
+  --bg:            #FFFBFA;
+  --surface:       #FFFFFF;
+  --surface-alt:   #FFF8F5;
+  --stripe:        rgba(255, 90, 31, 0.035);
+  --mono:          "JetBrains Mono", ui-monospace, monospace;
+  --sans:          "Heebo", system-ui, sans-serif;
+  --sidebar-w:     280px;
+  --radius:        10px;
+  --shadow:        0 1px 0 rgba(42, 42, 42, 0.04);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+.en {
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-family: var(--mono);
+  font-size: 0.88em;
+}
+
+code, pre {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: left;
+  font-family: var(--mono);
+}
+
+.app { display: flex; min-height: 100vh; }
+
+aside.nav {
+  width: var(--sidebar-w);
+  flex-shrink: 0;
+  border-left: 1px solid var(--border);
+  padding: 28px 18px 80px;
+  overflow-y: auto;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  background: var(--surface);
+}
+
+.nav .brand {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin-bottom: 6px;
+}
+
+.nav .brand-sub {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-bottom: 28px;
+  line-height: 1.4;
+}
+
+.nav-group { margin-bottom: 22px; }
+
+.nav-group-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+  padding: 0 10px;
+}
+
+.nav a {
+  display: block;
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-size: 13.5px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  margin-bottom: 2px;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1.35;
+}
+
+.nav a:hover {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+.nav a.active {
+  background: var(--accent-deep);
+  color: #fff;
+  font-weight: 500;
+}
+
+.nav a .num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  margin-left: 6px;
+}
+
+.nav a.active .num { color: #FFE4D6; }
+
+main {
+  flex: 1;
+  min-width: 0;
+  padding: 40px 48px 120px;
+  max-width: 860px;
+}
+
+.hero {
+  margin-bottom: 48px;
+  padding: 36px 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--stripe) 0px,
+    var(--stripe) 1px,
+    transparent 1px,
+    transparent 10px
+  );
+}
+
+.hero .kicker {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+  max-width: 36em;
+}
+
+.day-banner {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 56px 0 28px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--accent-mid);
+}
+
+.day-banner .tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--accent-deep);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.day-banner h2 {
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+section.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 28px 32px;
+  margin-bottom: 22px;
+  box-shadow: var(--shadow);
+  scroll-margin-top: 24px;
+}
+
+section.card.intro {
+  background: var(--surface-alt);
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin-bottom: 18px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.meta strong { color: var(--ink); font-weight: 500; }
+
+.badge {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-mid);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+
+h3.title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+h4 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 22px 0 10px;
+  color: var(--ink);
+}
+
+p { margin-bottom: 12px; color: var(--ink); }
+
+ul, ol {
+  margin: 0 0 14px 0;
+  padding-right: 1.35em;
+}
+
+li { margin-bottom: 8px; color: var(--ink); }
+li::marker { color: var(--accent); }
+
+blockquote {
+  margin: 14px 0;
+  padding: 14px 18px;
+  background: var(--accent-soft);
+  border-right: 3px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  color: var(--ink);
+  font-size: 0.98rem;
+}
+
+blockquote p { margin-bottom: 0; }
+
+.takeaway {
+  margin-top: 22px;
+  padding: 16px 18px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.takeaway .label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin-bottom: 8px;
+}
+
+.takeaway ul { margin-bottom: 0; }
+
+.try-also {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px dashed var(--accent-mid);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.try-also .label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 14px 0 18px;
+  font-size: 14px;
+  background: var(--surface);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 10px 12px;
+  text-align: right;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--surface-alt);
+  font-weight: 500;
+}
+
+td code, p code, li code {
+  background: var(--accent-soft);
+  color: var(--ink);
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.86em;
+}
+
+.next {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.next a {
+  color: var(--accent-deep);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.next a:hover { text-decoration: underline; }
+
+.tip-box {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.mcp-box {
+  margin: 18px 0 22px;
+  padding: 18px 18px 20px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-mid);
+  border-radius: 12px;
+}
+
+.mcp-box > .label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin-bottom: 8px;
+}
+
+.mcp-box h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.mcp-box ol,
+.mcp-box ul {
+  margin-bottom: 10px;
+}
+
+.mcp-box pre {
+  margin: 10px 0 14px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 12.5px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.mcp-box .warn {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.check-list {
+  list-style: none;
+  padding-right: 0;
+}
+
+.check-list li {
+  padding-right: 1.6em;
+  position: relative;
+}
+
+.check-list li::before {
+  content: "☐";
+  position: absolute;
+  right: 0;
+  color: var(--accent-deep);
+  font-family: var(--mono);
+}
+
+@media (max-width: 900px) {
+  .app { flex-direction: column; }
+  aside.nav {
+    width: 100%;
+    height: auto;
+    position: relative;
+    border-left: none;
+    border-bottom: 1px solid var(--border);
+    max-height: 240px;
+  }
+  main { padding: 24px 18px 80px; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<aside class="nav" id="sidebar">
+  <div class="brand">AI for Testers</div>
+  <div class="brand-sub">פלייבוק מעשי ל-Cursor<br>בודקים ידניים</div>
+
+  <div class="nav-group">
+    <div class="nav-group-title">תרגיל 1</div>
+    <a href="#t1-intro"><span class="num">00</span> פתיחה</a>
+    <a href="#ex1-00"><span class="num">0</span> הכנה ב-Cursor</a>
+    <a href="#ex1-01"><span class="num">1</span> ג'נרוט תסריטים</a>
+    <a href="#ex1-02"><span class="num">2</span> אתגר כיסוי</a>
+    <a href="#ex1-03"><span class="num">3</span> תבנית ADO</a>
+    <a href="#ex1-04"><span class="num">4</span> ייצוא וייבוא</a>
+    <a href="#ex1-05"><span class="num">5</span> סגירה ו-Review</a>
+  </div>
+
+  <div class="nav-group">
+    <div class="nav-group-title">תרגיל 2</div>
+    <a href="#t2-intro"><span class="num">00</span> פתיחה</a>
+    <a href="#ex2-00"><span class="num">0</span> הכנה</a>
+    <a href="#ex2-01"><span class="num">1</span> Azure DevOps MCP</a>
+    <a href="#ex2-02"><span class="num">2</span> Outlook MCP</a>
+    <a href="#ex2-03"><span class="num">3</span> פרומפט סטטוס</a>
+    <a href="#ex2-04"><span class="num">4</span> טיוטת מייל</a>
+    <a href="#ex2-05"><span class="num">5</span> טיוב איטרטיבי</a>
+    <a href="#ex2-06"><span class="num">6</span> שיפור יומיומי</a>
+  </div>
+</aside>
+
+<main>
+
+  <header class="hero">
+    <div class="kicker">Manual QA · Cursor Agents</div>
+    <h1>פלייבוק תרגילים לבודקים</h1>
+    <p>שני תרגילים באותו יום: מתסריטי בדיקה מתוך אפיון, ועד מייל סטטוס חי מ-Azure DevOps לטיוטה ב-Outlook. ה-agent מאיץ. אתם ה-Reviewer.</p>
+  </header>
+
+  <!-- ========== תרגיל 1 ========== -->
+  <div class="day-banner" id="ex1">
+    <span class="tag">תרגיל 1</span>
+    <h2>ג'נרוט תסריטי בדיקות מאפיון</h2>
+  </div>
+
+  <section class="card intro" id="t1-intro">
+    <h3 class="title">תרגיל 1 - מאפיון טכני לתסריטים ב-ADO</h3>
+    <p>תתרגלו עבודה עם <strong>Cursor Agent</strong> כבודקים ידניים: לצרף אפיון, לג'נרט תסריטים, לאתגר כיסוי, ולהפיק קובץ מוכן לייבוא ל-Azure DevOps. אין צורך לכתוב קוד אפליקציה.</p>
+
+    <h4>איך עובדים</h4>
+    <ol>
+      <li>פתחו ב-Cursor את תיקיית <code class="en">exercises/ai-for-testers</code> (<span class="en">Open Folder</span>).</li>
+      <li>פתחו את חלונית ה-Agent (ברירת מחדל: <span class="en">Ctrl+I</span> / <span class="en">Cmd+I</span>).</li>
+      <li>ודאו שאתם במצב <strong>Agent</strong> (ולא Ask בלבד).</li>
+      <li>בצעו את השלבים לפי הסדר. לכל שלב: מטרה, שלבים, ו"מה למדנו".</li>
+    </ol>
+
+    <h4>קבצי עזר בתרגיל</h4>
+    <table>
+      <thead>
+        <tr><th>קובץ</th><th>תפקיד</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code class="en">fixtures/technical-spec.md</code></td><td>אפיון "התראת יתרה נמוכה" (מצרפים ל-Agent)</td></tr>
+        <tr><td><code class="en">fixtures/ado-import-template.csv</code></td><td>צורת עמודות לייבוא Test Cases ל-ADO</td></tr>
+      </tbody>
+    </table>
+
+    <h4>מבנה התרגיל</h4>
+    <table>
+      <thead>
+        <tr><th>שלב</th><th>שם</th><th>מה עושים</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>0</td><td><a href="#ex1-00">הכנה ב-Cursor</a></td><td>פתיחת workspace, Agent, צירוף קבצים</td></tr>
+        <tr><td>1</td><td><a href="#ex1-01">ג'נרוט תסריטים</a></td><td>פרומפט ראשון מתוך האפיון</td></tr>
+        <tr><td>2</td><td><a href="#ex1-02">אתגר כיסוי</a></td><td>Edge / Negative / הרשאות (חובה)</td></tr>
+        <tr><td>3</td><td><a href="#ex1-03">תבנית ADO</a></td><td>המרה לטבלת ייבוא</td></tr>
+        <tr><td>4</td><td><a href="#ex1-04">ייצוא וייבוא</a></td><td>CSV/Excel → ADO (או dry-run)</td></tr>
+        <tr><td>5</td><td><a href="#ex1-05">סגירה</a></td><td>Definition of Done + Review</td></tr>
+      </tbody>
+    </table>
+
+    <div class="tip-box">
+      <strong>טיפ כללי</strong>
+      <p style="margin:8px 0 0"><strong>Context זה הכל</strong>: צרפו את האפיון במפורש. וגם: <strong>אתם ה-Reviewer</strong>. התשובה הראשונה של ה-agent נחשבת תמיד לחסרה עד שהוכחתם אחרת.</p>
+    </div>
+  </section>
+
+  <!-- EX1-00 -->
+  <section class="card" id="ex1-00">
+    <div class="meta">
+      <span class="badge">שלב 0</span>
+      <span><strong>נושא:</strong> סביבת עבודה לבודק ב-Cursor.</span>
+    </div>
+    <h3 class="title">שלב 0 - הכנה ב-Cursor</h3>
+
+    <h4>מטרה</h4>
+    <p>לוודא שה-workspace נכון, שאתם ב-Agent mode, ושאתם יודעים לצרף קובץ לשיחה.</p>
+
+    <h4>שלבים</h4>
+    <ol>
+      <li>ב-Cursor: <span class="en">File → Open Folder</span> ובחרו את תיקיית <code class="en">ai-for-testers</code>.</li>
+      <li>פתחו את <code class="en">fixtures/technical-spec.md</code> ועיינו 2-3 דקות במבנה (AC, Business Rules, מקרי קצה).</li>
+      <li>פתחו Agent. אם מופיע Ask/Chat בלבד, עברו ל-<strong>Agent</strong>.</li>
+      <li>בדקו צירוף קובץ: גררו את האפיון לצ'אט, או השתמשו ב-<code class="en">@</code> ובחרו את הקובץ.</li>
+      <li>בדיקת עשן קצרה:
+        <blockquote><p>"קרא את <code class="en">fixtures/technical-spec.md</code>. במשפט אחד: מה הפיצ'ר, ובמשפט שני: מה מחוץ להיקף?"</p></blockquote>
+      </li>
+    </ol>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>לבודק, "סביבת פיתוח" = תיקייה + אפיון + Agent, לא בהכרח IDE של קוד.</li>
+        <li>צירוף קובץ מפורש מנצח הסתמכות על "המודל כבר יודע".</li>
+      </ul>
+    </div>
+    <p class="next">עברו ל-<a href="#ex1-01">שלב 1 - ג'נרוט תסריטים</a>.</p>
+  </section>
+
+  <!-- EX1-01 -->
+  <section class="card" id="ex1-01">
+    <div class="meta">
+      <span class="badge">שלב 1</span>
+      <span><strong>נושא:</strong> פרומפט ראשון, שדות חובה ל-ADO.</span>
+    </div>
+    <h3 class="title">שלב 1 - ג'נרוט ראשוני של תסריטי בדיקות</h3>
+
+    <h4>מטרה</h4>
+    <p>לקבל רשימת Test Cases שמכסה את הלוגיקה העסקית באפיון, עם שדות שמתאימים לעבודה מול ADO.</p>
+
+    <h4>שלבים</h4>
+    <ol>
+      <li>ודאו ש-<code class="en">fixtures/technical-spec.md</code> מצורף לשיחה.</li>
+      <li>הריצו:
+        <blockquote><p>"קרא את מסמך האפיון הטכני המצורף (<code class="en">fixtures/technical-spec.md</code>). ג'נרט רשימת תסריטי בדיקות (Test Cases) המכסים את כל הלוגיקה העסקית ותנאי הקבלה. עבור כל תסריט כלול: Title, Description, Pre-Conditions, Steps, Expected Result, Priority (1-4), Automation Status (Manual), ומיפוי למזהי AC (למשל AC-03). אל תמציא יכולות מחוץ להיקף (SMS, המרת מטבע)."</p></blockquote>
+      </li>
+      <li>סקרו את התשובה הראשונה. סמנו לעצמכם מה נראה חזק ומה חסר. <strong>אל תמשיכו לייצוא עדיין.</strong></li>
+    </ol>
+
+    <div class="tip-box">
+      <strong>רף איכות מינימלי לשלב זה</strong>
+      <p style="margin:8px 0 0">לפחות 8 תסריטים, וכל תסריט עם Steps מספריים (לא פסקה אחת). אם קיבלתם פחות, בקשו להרחיב לפני שלב 2.</p>
+    </div>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>פרומפט טוב לבודק מגדיר פורמט שדות, לא רק "תכתוב טסטים".</li>
+        <li>הפלט הראשון הוא טיוטה לעבודה, לא תוצר סופי.</li>
+      </ul>
+    </div>
+    <p class="next">עברו ל-<a href="#ex1-02">שלב 2 - אתגר כיסוי</a>.</p>
+  </section>
+
+  <!-- EX1-02 -->
+  <section class="card" id="ex1-02">
+    <div class="meta">
+      <span class="badge">שלב 2</span>
+      <span><strong>נושא:</strong> Iterative refinement, אתגר מקצועי.</span>
+    </div>
+    <h3 class="title">שלב 2 - אתגר כיסוי (חובה לפני ייצוא)</h3>
+
+    <h4>מטרה</h4>
+    <p>להוכיח שהרשימה מכסה Edge Cases, Negative Scenarios והרשאות. זה השלב שבו נוצר הערך האמיתי.</p>
+
+    <h4>שלבים</h4>
+    <ol>
+      <li>באותו session, שאלו:
+        <blockquote><p>"אילו מקרי קצה (Edge Cases), תרחישי שליליים (Negative), ותרחישי הרשאות שמופיעים באפיון (במיוחד סעיף 7 ו-AC-07/AC-08) אינם מכוסים ברשימה שיצרת? הצג טבלת פערים: AC/BR מול תסריט קיים או חסר."</p></blockquote>
+      </li>
+      <li>בקשו השלמה:
+        <blockquote><p>"השלם את התרחישים החסרים. חובה לכלול לפחות: (1) סף שווה ליתרה בדיוק, (2) סף לא חוקי &lt;=0, (3) viewer מול owner, (4) כשל ב-balance API, (5) חשד לבאנר stale אחרי כיבוי התראה. עדכן את הרשימה המלאה."</p></blockquote>
+      </li>
+      <li>בדקו מול ה-Definition of Done שבאפיון:
+        <ul class="check-list">
+          <li>כל AC-01..AC-12 ממופה לתסריט אחד לפחות</li>
+          <li>לפחות 4 תרחישי Negative/Edge מסעיף 7</li>
+          <li>תסריט הרשאות אחד לפחות</li>
+          <li>אין תסריטים מחוץ להיקף</li>
+        </ul>
+      </li>
+      <li>אם משהו חסר, המשיכו באותו session עד שהצ'קליסט ירוק.</li>
+    </ol>
+
+    <div class="try-also">
+      <div class="label">אתגר בונוס</div>
+      <p style="margin:0">בקשו מה-agent לדרג את התסריטים לפי סיכון עסקי (לא רק Priority מספרי) ולהצביע על 3 תסריטים שחייבים לרוץ ב-smoke לפני שאר הסבב.</p>
+    </div>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>תהליך מבוסס איטרציות: הבסיס בצעד 1, האיכות בצעד 2.</li>
+        <li>בודק מקצועי מאתגר כיסוי; הוא לא מאשר "נראה סבבה".</li>
+      </ul>
+    </div>
+    <p class="next">עברו ל-<a href="#ex1-03">שלב 3 - תבנית ADO</a>.</p>
+  </section>
+
+  <!-- EX1-03 -->
+  <section class="card" id="ex1-03">
+    <div class="meta">
+      <span class="badge">שלב 3</span>
+      <span><strong>נושא:</strong> מטקסט לפורמט ארגוני.</span>
+    </div>
+    <h3 class="title">שלב 3 - המרה לתבנית ייבוא ל-ADO</h3>
+
+    <h4>מטרה</h4>
+    <p>להפוך את רשימת התסריטים לטבלה שמתאימה לייבוא Test Cases ב-Azure DevOps.</p>
+
+    <h4>שלבים</h4>
+    <ol>
+      <li>פתחו לעיון את <code class="en">fixtures/ado-import-template.csv</code> (שימו לב: תסריט אחד = מספר שורות, שורה לכל Step).</li>
+      <li>בקשו:
+        <blockquote><p>"מנה את כל תסריטי הבדיקות שסיכמנו והצג אותם בטבלה לייצוא CSV לייבוא ל-Azure DevOps. שמות העמודות חייבים להיות בדיוק: Work Item Type, Title, Test Step, Step Action, Step Expected, Priority. Work Item Type = Test Case. כל Step בשורה נפרדת עם אותו Title. Priority מספרי. התאם לדוגמה ב-<code class="en">fixtures/ado-import-template.csv</code>."</p></blockquote>
+      </li>
+      <li>ודאו שאין עמודות מיותרות ושצעדים ממוספרים עולים (1, 2, 3...).</li>
+    </ol>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>חיבור לפורמט ארגוני הופך תוצר AI מכלי שיחה לקובץ עבודה.</li>
+        <li>תבנית לדוגמה ב-context מפחיתה המצאות של שמות עמודות.</li>
+      </ul>
+    </div>
+    <p class="next">עברו ל-<a href="#ex1-04">שלב 4 - ייצוא וייבוא</a>.</p>
+  </section>
+
+  <!-- EX1-04 -->
+  <section class="card" id="ex1-04">
+    <div class="meta">
+      <span class="badge">שלב 4</span>
+      <span><strong>נושא:</strong> CSV/Excel ו-ADO Import.</span>
+    </div>
+    <h3 class="title">שלב 4 - ייצוא וייבוא ל-Azure DevOps</h3>
+
+    <h4>מטרה</h4>
+    <p>להוציא קובץ נקי ולייבא (או לבצע dry-run) כך שהתסריטים קיימים במערכת.</p>
+
+    <h4>שלבים</h4>
+    <ol>
+      <li>בקשו מה-agent ליצור קובץ CSV בתיקייה, למשל:
+        <blockquote><p>"שמור את טבלת הייבוא לקובץ <code class="en">output/low-balance-testcases.csv</code> עם אותן עמודות, encoding שמתאים ל-Excel."</p></blockquote>
+      </li>
+      <li>פתחו ב-Excel / Google Sheets, ודאו יישור עמודות, ושמרו.</li>
+      <li><strong>אם יש גישת ADO בהדרכה:</strong>
+        <ol>
+          <li>Azure DevOps → הפרויקט → <span class="en">Test Plans</span> (או Import Work Items לפי מדיניות הארגון).</li>
+          <li>Import Test Cases / Import, העלו את הקובץ.</li>
+          <li>בצעו Mapping לשדות במידת הצורך, אשרו, וודאו שהתסריטים נוצרו.</li>
+        </ol>
+      </li>
+      <li><strong>Dry-run (אם אין גישה):</strong> השוו ידנית את הקובץ שלכם ל-<code class="en">ado-import-template.csv</code>. סמנו: אותן כותרות, Steps מפוצלים, אין תאים שבורים בפסיקים לא מוקלטים. זה מספיק לסיום השלב בהדרכה.</li>
+    </ol>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>ה-agent יכול לייצר את הקובץ; האחריות על תקינות הייבוא נשארת אצלכם.</li>
+        <li>Fallback מתוכנן מראש מונע תקיעת תרגיל כש-ADO חסום.</li>
+      </ul>
+    </div>
+    <p class="next">עברו ל-<a href="#ex1-05">שלב 5 - סגירה</a>.</p>
+  </section>
+
+  <!-- EX1-05 -->
+  <section class="card" id="ex1-05">
+    <div class="meta">
+      <span class="badge">שלב 5</span>
+      <span><strong>נושא:</strong> Review אנושי וסגירת תרגיל 1.</span>
+    </div>
+    <h3 class="title">שלב 5 - סגירה ו-Review</h3>
+
+    <h4>מטרה</h4>
+    <p>לנעול Definition of Done ולנסח מה תיקחו לתרגיל 2.</p>
+
+    <h4>צ'קליסט סגירה</h4>
+    <ul class="check-list">
+      <li>יש קובץ CSV/טבלה מוכנה לייבוא (או יובאה ל-ADO)</li>
+      <li>כיסוי AC מלא לפי מיפוי שביצעתם</li>
+      <li>לפחות 4 Edge/Negative + תסריט הרשאות</li>
+      <li>אין פיצ'רים מחוץ להיקף בתסריטים</li>
+    </ul>
+
+    <h4>שאלות רפלקציה (כתבו לעצמכם)</h4>
+    <ul>
+      <li>באיזה שלב ה-agent חסך הכי הרבה זמן?</li>
+      <li>איפה תיקנתם אותו, ומה היה קורה אם לא?</li>
+      <li>מה תיקחו איתכם לתרגיל 2 (מייל סטטוס)?</li>
+    </ul>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>אתם ה-Reviewer: האחריות על כיסוי האפיון והדיוק ב-ADO נשארת אצל בודק התוכנה.</li>
+        <li>Agent טוב מקצר עבודה סיזיפית; הוא לא מחליף שיקול דעת QA.</li>
+      </ul>
+    </div>
+    <p class="next">עברו ל-<a href="#t2-intro">תרגיל 2 - מייל סטטוס</a>.</p>
+  </section>
+
+  <!-- ========== תרגיל 2 ========== -->
+  <div class="day-banner" id="ex2">
+    <span class="tag">תרגיל 2</span>
+    <h2>מייל סטטוס בדיקות מ-ADO ל-Outlook</h2>
+  </div>
+
+  <section class="card intro" id="t2-intro">
+    <h3 class="title">תרגיל 2 - אוטומציה בטוחה של דיווח סטטוס</h3>
+    <p>תיצרו מייל סטטוס יומי/דו-יומי שמסכם סבב בדיקות מ-Azure DevOps, לפי תבנית אחידה, ותעצרו ב<strong>טיוטה בלבד</strong> ב-Outlook (או בגוף מייל להעתקה אם MCP חסום).</p>
+
+    <h4>מבנה התרגיל</h4>
+    <table>
+      <thead>
+        <tr><th>שלב</th><th>שם</th><th>מה עושים</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>0</td><td><a href="#ex2-00">הכנה</a></td><td>ערכי מדריך: Org, MSP, TestPlan</td></tr>
+        <tr><td>1</td><td><a href="#ex2-01">ADO MCP</a></td><td>חיבור ושליפת נתוני סטטוס</td></tr>
+        <tr><td>2</td><td><a href="#ex2-02">Outlook MCP</a></td><td>Draft בלבד + Fallback</td></tr>
+        <tr><td>3</td><td><a href="#ex2-03">פרומפט סטטוס</a></td><td>MSP + TestPlan + תבנית</td></tr>
+        <tr><td>4</td><td><a href="#ex2-04">טיוטה</a></td><td>ג'נרוט Draft / גוף מייל</td></tr>
+        <tr><td>5</td><td><a href="#ex2-05">טיוב</a></td><td>Feedback loop עד מוכן להפצה</td></tr>
+        <tr><td>6</td><td><a href="#ex2-06">שיפור יומיומי</a></td><td>רעיון אישי להצגה למנהלים</td></tr>
+      </tbody>
+    </table>
+
+    <h4>קבצי עזר</h4>
+    <ul>
+      <li><code class="en">fixtures/email-template.md</code>: מבנה מייל, מיפוי שדות ADO, ודוגמת איכות.</li>
+      <li><code class="en">fixtures/demo-ado-status.md</code>: צילום מצב דמו (כשאין ADO חי / MCP נכשל).</li>
+    </ul>
+
+    <div class="tip-box">
+      <strong>כלל בטיחות שאינו ניתן למשא ומתן</strong>
+      <p style="margin:8px 0 0">אין שליחת מייל מה-agent. רק Draft, או טקסט להעתקה. נמענים מוזנים ידנית אחרי Review שלכם.</p>
+    </div>
+  </section>
+
+  <!-- EX2-00 -->
+  <section class="card" id="ex2-00">
+    <div class="meta">
+      <span class="badge">שלב 0</span>
+    </div>
+    <h3 class="title">שלב 0 - הכנה</h3>
+
+    <h4>מטרה</h4>
+    <p>להבין מה ממלאים בפרומפט, ולבחור מצב: <strong>Live ADO</strong> (MCP) או <strong>Offline Demo</strong> (קובץ דמו). אין אפליקציית קוד לבנות כאן.</p>
+
+    <h4>מה כל פרמטר אומר</h4>
+    <table>
+      <thead>
+        <tr><th>פרמטר</th><th>משמעות</th><th>ערך דמו לשיעור</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code class="en">YOUR_ADO_ORG</code></td><td>שם הארגון ב-<span class="en">dev.azure.com/&lt;שם&gt;</span></td><td>מהמדריך (אחרי הקמת הארגון)</td></tr>
+        <tr><td>פרויקט</td><td>Project ב-ADO</td><td><code class="en">FinDash-QA-Workshop</code></td></tr>
+        <tr><td>MSP</td><td>שם חבילת העבודה / הסבב בפרומפט</td><td><code class="en">MSP-FinDash-Q3</code></td></tr>
+        <tr><td>TestPlan</td><td>שם תוכנית הבדיקות</td><td><code class="en">TP-LowBalance-Alert</code></td></tr>
+        <tr><td>MCP</td><td>חיבור כלים ב-Cursor (לא ערך בטבלה)</td><td>מוגדר בשלבים 1-2; אם נחסם → Offline</td></tr>
+      </tbody>
+    </table>
+
+    <h4>בחרו מצב עבודה</h4>
+    <ol>
+      <li><strong>Live:</strong> המדריך נתן Org + גישה לפרויקט. המשיכו לשלב 1 (ADO MCP).</li>
+      <li><strong>Offline:</strong> אין ארגון / MCP נכשל. דלגו על שלבים 1-2 של MCP, צרפו
+        <code class="en">fixtures/demo-ado-status.md</code> + <code class="en">fixtures/email-template.md</code>,
+        והמשיכו משלב 3 עם MSP/TestPlan של הדמו. (למדריך: פירוט הקמה ב-<code class="en">instructor-setup/testers/DEMO-SETUP.md</code>.)</li>
+    </ol>
+
+    <h4>שלבים</h4>
+    <ol>
+      <li>מלאו / העתיקו מהמדריך את Org (אם Live) וודאו MSP + TestPlan (ברירת מחדל לדמו למעלה).</li>
+      <li>פתחו את <code class="en">fixtures/email-template.md</code> וקראו את מבנה המייל + מיפוי השדות.</li>
+      <li>אם Offline: פתחו גם את <code class="en">fixtures/demo-ado-status.md</code>.</li>
+    </ol>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>Org/MSP/TestPlan הם מזהי ADO (או דמו), לא "אפליקציה להתקין".</li>
+        <li>בלי MSP/TestPlan מדויקים, ה-agent ינחש או ימשוך את הסבב הלא נכון.</li>
+      </ul>
+    </div>
+    <p class="next">עברו ל-<a href="#ex2-01">שלב 1 - Azure DevOps MCP</a> (או דלגו ל-<a href="#ex2-03">שלב 3</a> במצב Offline).</p>
+  </section>
+
+  <!-- EX2-01 -->
+  <section class="card" id="ex2-01">
+    <div class="meta">
+      <span class="badge">שלב 1</span>
+    </div>
+    <h3 class="title">שלב 1 - חיבור Azure DevOps MCP</h3>
+
+    <h4>מטרה</h4>
+    <p>לחבר את Cursor ל-ADO כדי שה-agent יוכל לשלוף באגים ותמונת סטטוס בלי copy-paste ידני.</p>
+
+    <div class="mcp-box">
+      <div class="label">MCP Setup</div>
+      <h4>הכנת MCP: Azure DevOps</h4>
+      <ol>
+        <li>החליפו את <code class="en">YOUR_ADO_ORG</code> בשם הארגון מהמדריך.</li>
+        <li>ב-Cursor: <span class="en">Settings → Tools &amp; MCP → New MCP Server</span>, או צרו/ערכו
+          <code class="en">.cursor/mcp.json</code> ב-workspace (או <code class="en">%USERPROFILE%\.cursor\mcp.json</code>).</li>
+        <li>הוסיפו:</li>
+      </ol>
+<pre>{
+  "mcpServers": {
+    "ado": {
+      "command": "npx",
+      "args": ["-y", "@azure-devops/mcp", "YOUR_ADO_ORG"]
+    }
+  }
+}</pre>
+      <ol start="4">
+        <li>שמרו, Reload ל-Cursor, אשרו Enable, וודאו נקודה ירוקה ליד <code class="en">ado</code>.</li>
+        <li>בדיקת עשן:
+          <blockquote><p>"האם כלי Azure DevOps MCP זמינים? רשום בקצרה מה אתה יכול לעשות מול Work Items ו-Test Plans."</p></blockquote>
+        </li>
+      </ol>
+      <p class="warn"><strong>אבטחה:</strong> אל תשמרו PAT בתוך repo משותף. השתמשו במשתנה סביבה מקומי לפי הנחיות המדריך.</p>
+    </div>
+
+    <h4>Fallback</h4>
+    <p>אם MCP חסום: פתחו Query/Test Plan בדפדפן, העתיקו סיכומי ספירות + רשימת באגים קריטיים, והדביקו ל-Agent כהקשר ידני בהמשך.</p>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li><span class="en">MCP</span> מחבר את ה-agent למערכת הארגונית; זה ה-context האמיתי לדיווח.</li>
+      </ul>
+    </div>
+    <p class="next">עברו ל-<a href="#ex2-02">שלב 2 - Outlook MCP</a>.</p>
+  </section>
+
+  <!-- EX2-02 -->
+  <section class="card" id="ex2-02">
+    <div class="meta">
+      <span class="badge">שלב 2</span>
+    </div>
+    <h3 class="title">שלב 2 - חיבור Outlook (Draft בלבד)</h3>
+
+    <h4>מטרה</h4>
+    <p>לאפשר יצירת טיוטת מייל בתיבה שלכם, בלי שליחה. אם החיבור לא זמין, נעבוד ב-Fallback מלא.</p>
+
+    <div class="mcp-box">
+      <div class="label">MCP Setup</div>
+      <h4>הכנת MCP: Microsoft Outlook / Graph (Draft)</h4>
+      <p>בסביבות ארגוניות החבילה וההרשאות משתנות. השתמשו בהגדרה שהמדריך מאשר. תבנית נפוצה לשרת MCP מבוסס Graph (דוגמה להמחשה):</p>
+<pre>{
+  "mcpServers": {
+    "ado": {
+      "command": "npx",
+      "args": ["-y", "@azure-devops/mcp", "YOUR_ADO_ORG"]
+    },
+    "outlook": {
+      "command": "npx",
+      "args": ["-y", "@microsoft/outlook-mcp"]
+    }
+  }
+}</pre>
+      <p class="warn">אם החבילה <code class="en">@microsoft/outlook-mcp</code> אינה זמינה / נחסמת במדיניות הארגון: <strong>דלגו על Outlook MCP</strong> ועבדו ב-Fallback (שלב 4). אל תבזבזו את זמן התרגיל על התקנה שלא עוברת אישור אבטחה.</p>
+      <ol>
+        <li>אם השרת עלה: בדיקת עשן:
+          <blockquote><p>"האם כלי Outlook MCP זמינים? אילו פעולות קיימות לגבי יצירת טיוטה? אשר שאין פעולת Send בשימוש בתרגיל הזה."</p></blockquote>
+        </li>
+        <li>כתבו לעצמכם כלל: בכל בקשה למייל תופיע המילה <strong>Draft בלבד / אל תשלח</strong>.</li>
+      </ol>
+    </div>
+
+    <h4>Fallback (מומלץ להכיר גם כשיש MCP)</h4>
+    <p>ה-agent מייצר את גוף המייל המעוצב בצ'אט → אתם מעתיקים ל-Outlook ידנית כטיוטה → מוסיפים נמענים → שולחים רק אחרי Review.</p>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>Human-in-the-loop: חיבור חי לנתונים כן; שליחה אוטומטית לא.</li>
+        <li>Fallback מתוכנן = תרגיל שלא נשבר על מדיניות IT.</li>
+      </ul>
+    </div>
+    <p class="next">עברו ל-<a href="#ex2-03">שלב 3 - פרומפט סטטוס</a>.</p>
+  </section>
+
+  <!-- EX2-03 -->
+  <section class="card" id="ex2-03">
+    <div class="meta">
+      <span class="badge">שלב 3</span>
+    </div>
+    <h3 class="title">שלב 3 - ניסוח פרומפט לדיווח סטטוס</h3>
+
+    <h4>מטרה</h4>
+    <p>לבנות בקשה אחת מקיפה: MSP, TestPlan, תבנית איכות, וכללי בטיחות.</p>
+
+    <h4>שלבים</h4>
+    <ol>
+      <li>צרפו את <code class="en">fixtures/email-template.md</code> לשיחה. במצב offline צרפו גם <code class="en">fixtures/demo-ado-status.md</code>.</li>
+      <li>השתמשו בערכי הדמו (או במה שכתב המדריך) והריצו:
+        <blockquote><p>"צור מייל סטטוס בדיקות מעודכן עבור סבב הבדיקות הנוכחי ב-Azure DevOps.<br>
+שם חבילת העבודה (MSP): MSP-FinDash-Q3<br>
+שם תוכנית הבדיקות (TestPlan): TP-LowBalance-Alert<br>
+שלוף נתונים עדכניים מ-ADO (MCP) לפי מיפוי השדות ב-<code class="en">fixtures/email-template.md</code>. אם אין MCP או שהוא נכשל: השתמש רק בנתונים מ-<code class="en">fixtures/demo-ado-status.md</code> ואל תמציא מספרים.<br>
+עצב בדיוק לפי מבנה התבנית והדוגמה בקובץ.<br>
+אם חסר נתון: כתוב במפורש 'לא זמין' ואל תמציא מספרים.<br>
+תוצר: טיוטת Draft בלבד. אל תשלח מייל. אל תמלא נמענים."</p></blockquote>
+      </li>
+    </ol>
+
+    <div class="tip-box">
+      <strong>למה הדוגמה חשובה</strong>
+      <p style="margin:8px 0 0">Few-Shot בתבנית מייצר סטנדרט אחיד לצוות הבדיקות וחוסך ויכוחים על מבנה בכל סוף יום.</p>
+    </div>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>פרומפט סטטוס טוב = מזהי סבב + תבנית + איסור המצאה + איסור שליחה.</li>
+      </ul>
+    </div>
+    <p class="next">עברו ל-<a href="#ex2-04">שלב 4 - טיוטת מייל</a>.</p>
+  </section>
+
+  <!-- EX2-04 -->
+  <section class="card" id="ex2-04">
+    <div class="meta">
+      <span class="badge">שלב 4</span>
+    </div>
+    <h3 class="title">שלב 4 - שליפת נתונים ויצירת טיוטה</h3>
+
+    <h4>מטרה</h4>
+    <p>לאשר הרצות MCP, לקבל טיוטה (או גוף מייל), ולבדוק שהמספרים לא הומצאו.</p>
+
+    <h4>שלבים</h4>
+    <ol>
+      <li>אשרו לסוכן להריץ כלי ADO (שליפת Bugs / Test Plan לפי הזמין).</li>
+      <li><strong>עם Outlook MCP:</strong> אשרו רק יצירת Draft בתיבה שלכם. בדקו ב-Outlook שהטיוטה קיימת ושדה To ריק או לא נשלח.</li>
+      <li><strong>בלי Outlook MCP:</strong> העתיקו את גוף המייל מהצ'אט לטיוטה ידנית ב-Outlook.</li>
+      <li>השוו 2-3 מספרים מול ADO בדפדפן (למשל ספירת Critical פתוחים). אם יש פער, תקנו בפרומפט הבא.</li>
+    </ol>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>הסוכן חזק כשהוא נסמך על tool results, לא על זיכרון מודל.</li>
+        <li>דגימת אימות ידנית קצרה מונעת דיווח מביך למנהלים.</li>
+      </ul>
+    </div>
+    <p class="next">עברו ל-<a href="#ex2-05">שלב 5 - טיוב</a>.</p>
+  </section>
+
+  <!-- EX2-05 -->
+  <section class="card" id="ex2-05">
+    <div class="meta">
+      <span class="badge">שלב 5</span>
+    </div>
+    <h3 class="title">שלב 5 - Feedback Loop עד לתוצאה מיטבית</h3>
+
+    <h4>מטרה</h4>
+    <p>לטייב את הטיוטה בדיאלוג עד שהסטטוס מדויק, חד, ומוכן להפצה ידנית.</p>
+
+    <h4>שלבים</h4>
+    <ol>
+      <li>סקרו את הטיוטה מול ה-checklist ב-<code class="en">email-template.md</code>.</li>
+      <li>בקשות טיוב לדוגמה (הריצו מה שרלוונטי):
+        <blockquote><p>"הדגש בטבלה את הבאגים הקריטיים שנפתחו או עודכנו היום."</p></blockquote>
+        <blockquote><p>"קצר את פסקת התקציר הניהולי ל-3 שורות, עם Blocker במשפט הראשון אם קיים."</p></blockquote>
+        <blockquote><p>"הוסף התרעה מפורשת על חסימה (Blocker) בתרחיש X / BUG מספר Y."</p></blockquote>
+      </li>
+      <li>חזרו עד שאתם מוכנים להוסיף נמענים ידנית. עדיין בלי Send מה-agent.</li>
+    </ol>
+
+    <h4>Definition of Done לטיוטה</h4>
+    <ul class="check-list">
+      <li>Subject בתבנית הנכונה</li>
+      <li>דשבורד התקדמות + Severity</li>
+      <li>Critical היום + Blockers מודגשים</li>
+      <li>אין מספרים מומצאים</li>
+      <li>Draft בלבד / ללא שליחה אוטומטית</li>
+    </ul>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>אוטומציה בטוחה = MCP לנתונים חיים + עצירה ב-Draft + Review אנושי.</li>
+        <li>אחידות בדיווח נוצרת מתבנית ודוגמת איכות, לא מכשרון חד-פעמי.</li>
+      </ul>
+    </div>
+    <p class="next">עברו ל-<a href="#ex2-06">שלב 6 - שיפור יומיומי</a>.</p>
+  </section>
+
+  <!-- EX2-06 -->
+  <section class="card" id="ex2-06">
+    <div class="meta">
+      <span class="badge">שלב 6</span>
+    </div>
+    <h3 class="title">שלב 6 - שיפור יומיומי להצגה למנהלים</h3>
+
+    <h4>מטרה</h4>
+    <p>לבחור משימת QA שחוזרת עליכם, ולתכנן איך Agent + context + כלים מקצרים אותה. זה החומר להצגות.</p>
+
+    <h4>שלב א' - בחירת משימה</h4>
+    <p>בחרו אחת (או הציעו דומה מהעבודה שלכם):</p>
+    <ul>
+      <li>סיכום באגים חדשים מאמש לבוקר סטנדאפ</li>
+      <li>בניית מטריצת כיסוי מתוך אפיון / User Story</li>
+      <li>ניסוח Bug report איכותי מתצפיות גולמיות</li>
+      <li>הכנת Checklist לרגרסיה לפני Release</li>
+    </ul>
+
+    <h4>שלב ב' - מדידת "לפני"</h4>
+    <ul>
+      <li>כמה זמן זה לוקח היום?</li>
+      <li>מה משתנה באיכות בין בודקים?</li>
+      <li>איפה יש copy-paste או חיפוש ידני חוזר?</li>
+    </ul>
+
+    <h4>שלב ג' - תכנון עם Agent</h4>
+    <blockquote><p>"המשימה היומית שלי היא: [...]. עזור לי לעצב זרימת עבודה ב-Cursor: איזה context לצרף, האם צריך MCP, מה ה-Definition of Done, ואיפה חייב Review אנושי. אל תממש עדיין, רק תוכנית."</p></blockquote>
+
+    <h4>שלב ד' - "אחרי" והכנה למנהלים</h4>
+    <ul>
+      <li>מה התקצר / השתפר?</li>
+      <li>דמו של 2 דקות: לפני → אחרי</li>
+      <li>מסר אחד: agents עוזרים בעבודה היומיומית דרך context, משוב מכלים, ו-Review אנושי. לא טייס אוטומטי.</li>
+    </ul>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>הערך האמיתי הוא בשילוב בזרימת QA היומית, לא רק בתרגיל הכיתה.</li>
+        <li>שיפור קטן שחוזר כל יום מצטבר מהר יותר מ"וואו" חד-פעמי.</li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+</div>
+
+<script>
+(function () {
+  const links = [...document.querySelectorAll('.nav a')];
+  const sections = links
+    .map((a) => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+
+  function setActive() {
+    const y = window.scrollY + 80;
+    let current = sections[0];
+    for (const s of sections) {
+      if (s.offsetTop <= y) current = s;
+    }
+    links.forEach((a) => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current.id);
+    });
+  }
+
+  window.addEventListener('scroll', setActive, { passive: true });
+  setActive();
+})();
+</script>
+</body>
+</html>

@@ -55,6 +55,8 @@ https://github.com/maorbarak100-creator/findash
 
 (FinDash כבר זמין בקישור למעלה.)
 
+הכנת מדריך (GitHub / ADO / הערות סודיות): ראו `../instructor-setup/developers/` (לא חלק מערכת המשתתף).
+
 בהצלחה!
 
 </div>

@@ -1,12 +1,14 @@
 <div dir="rtl">
 
-# חומרי משתתפים: AI for Developers
+# חומרי תרגול: AI for Developers / Testers
 
-תיקייה זו מכילה **שני repos נפרדים** לשיתוף עם המשתתפים.
-
-| תיקייה | Repo | תוכן |
+| תיקייה | קהל | תוכן |
 |--------|------|------|
-| `findash/` | אפליקציית FinDash | `backend/`, `frontend/`, `AGENTS.md`, rules אופציונליים |
-| `ai-for-developers-learners/` | חומרי הדרכה | `playbook.html`, `sample-code/` |
+| `ai-for-developers-learners/` | משתתפים (מפתחים) | `playbook.html`, `sample-code/` |
+| `findash/` | משתתפים (מפתחים, תרגיל 2) | אפליקציית FinDash |
+| `ai-for-testers/` | משתתפים (בודקים) | `playbook.html`, `fixtures/` |
+| `instructor-setup/` | **מדריך בלבד** | הכנה לשיעור: `developers/`, `testers/` |
+
+אל תדחפו את `instructor-setup/` ל-repos של המשתתפים.
 
 </div>
