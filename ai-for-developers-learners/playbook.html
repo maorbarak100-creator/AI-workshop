@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>פלייבוק תרגילים: יום 1 + יום 2</title>
+<title>פלייבוק תרגילים: תרגיל 1 + תרגיל 2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -368,6 +368,52 @@ td code, p code, li code {
   border-radius: 10px;
 }
 
+.mcp-box {
+  margin: 18px 0 22px;
+  padding: 18px 18px 20px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-mid);
+  border-radius: 12px;
+}
+
+.mcp-box > .label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-deep);
+  margin-bottom: 8px;
+}
+
+.mcp-box h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.mcp-box ol,
+.mcp-box ul {
+  margin-bottom: 10px;
+}
+
+.mcp-box pre {
+  margin: 10px 0 14px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 12.5px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.mcp-box .warn {
+  margin: 10px 0 0;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
 @media (max-width: 900px) {
   .app { flex-direction: column; }
   aside.nav {
@@ -407,9 +453,10 @@ td code, p code, li code {
     <a href="#ex2-01"><span class="num">1</span> Clone מ-GitHub</a>
     <a href="#ex2-02"><span class="num">2</span> ארכיטקטורה</a>
     <a href="#ex2-03"><span class="num">3</span> תיקון באג</a>
-    <a href="#ex2-04"><span class="num">4</span> Work Item</a>
-    <a href="#ex2-05"><span class="num">5</span> מימוש פיצ'ר</a>
-    <a href="#ex2-06"><span class="num">6</span> שיפור יומיומי</a>
+    <a href="#ex2-04"><span class="num">4</span> באג Cache</a>
+    <a href="#ex2-05"><span class="num">5</span> Work Item</a>
+    <a href="#ex2-06"><span class="num">6</span> מימוש פיצ'ר</a>
+    <a href="#ex2-07"><span class="num">7</span> שיפור יומיומי</a>
   </div>
 </aside>
 
@@ -420,14 +467,14 @@ td code, p code, li code {
     <h1>פלייבוק תרגילים</h1>
   </header>
 
-  <!-- ========== DAY 1 ========== -->
-  <div class="day-banner" id="day1">
-    <span class="tag">Day 1</span>
-    <h2>תרגילים מעשיים</h2>
+  <!-- ========== תרגיל 1 ========== -->
+  <div class="day-banner" id="ex1">
+    <span class="tag">תרגיל 1</span>
+    <h2>חימום מעשי</h2>
   </div>
 
   <section class="card intro" id="d1-intro">
-    <h3 class="title">יום 1 - תרגילים מעשיים</h3>
+    <h3 class="title">תרגיל 1 - חימום מעשי</h3>
     <p>התרגילים האלה מתרגלים כל אחד מהנושאים שלמדנו בבוקר, בתוך Cursor. הם קצרים בכוונה - המטרה היא לצבור ביטחון בעבודה עם agent, לא לבנות מוצר.</p>
 
     <h4>איך עובדים</h4>
@@ -456,7 +503,7 @@ td code, p code, li code {
 
     <div class="tip-box">
       <strong>טיפ כללי לכל התרגילים</strong>
-      <p style="margin:8px 0 0">זכרו את הכלל מהבוקר: <strong>Context זה הכל</strong>. ככל שתסבירו טוב יותר מה אתם רוצים ותצרפו את הקבצים הרלוונטיים - כך התוצאה תהיה טובה יותר. וגם: <strong>אתם ה-Reviewer</strong> - תמיד קראו את מה שה-agent הציע לפני שאתם מאשרים.</p>
+      <p style="margin:8px 0 0">זכרו את הכלל מהחלק העיוני: <strong>Context זה הכל</strong>. ככל שתסבירו טוב יותר מה אתם רוצים ותצרפו את הקבצים הרלוונטיים - כך התוצאה תהיה טובה יותר. וגם: <strong>אתם ה-Reviewer</strong> - תמיד קראו את מה שה-agent הציע לפני שאתם מאשרים.</p>
     </div>
   </section>
 
@@ -524,7 +571,7 @@ td code, p code, li code {
       <ul>
         <li>ה-agent הוא כלי לימוד מצוין ל-codebase לא מוכר.</li>
         <li>שאלות ממוקדות מקבלות תשובות טובות יותר.</li>
-        <li>זהו בדיוק הכישור שנשתמש בו מחר על אפליקציה אמיתית.</li>
+        <li>זהו בדיוק הכישור שנשתמש בו בתרגיל 2 על אפליקציה אמיתית.</li>
       </ul>
     </div>
   </section>
@@ -697,7 +744,7 @@ td code, p code, li code {
       <div class="label">מה למדנו</div>
       <ul>
         <li>Rules (<code>.cursor/rules/</code>) + <code>AGENTS.md</code> = הדרך לגרום ל-agent לעבוד לפי הסטנדרטים שלכם.</li>
-        <li>זה חוסך חזרות ומבטיח אחידות - נשתמש בזה מחר.</li>
+        <li>זה חוסך חזרות ומבטיח אחידות - נשתמש בזה בתרגיל 2.</li>
       </ul>
     </div>
   </section>
@@ -734,27 +781,27 @@ td code, p code, li code {
     <ul>
       <li>באילו שלבים ה-agent חסך לכם הכי הרבה זמן?</li>
       <li>איפה נאלצתם להתערב או לתקן אותו?</li>
-      <li>מה תיקחו איתכם למחר?</li>
+      <li>מה תיקחו איתכם לתרגיל 2?</li>
     </ul>
 
     <div class="takeaway">
       <div class="label">מה למדנו</div>
       <ul>
         <li>זרימת עבודה מלאה עם agent: תכנון → פיתוח → אימות → טסטים → review.</li>
-        <li>זה בדיוק המבנה של יום 2, רק על אפליקציה אמיתית וגדולה יותר.</li>
+        <li>זה בדיוק המבנה של תרגיל 2, רק על אפליקציה אמיתית וגדולה יותר.</li>
       </ul>
     </div>
   </section>
 
-  <!-- ========== DAY 2 ========== -->
-  <div class="day-banner" id="day2">
+  <!-- ========== תרגיל 2 ========== -->
+  <div class="day-banner" id="ex2">
     <span class="tag">תרגיל 2</span>
     <h2>חקירת אפליקציה אמיתית עם Agents</h2>
   </div>
 
   <section class="card intro" id="d2-intro">
     <h3 class="title">תרגיל 2 - חקירת אפליקציה אמיתית עם Agents</h3>
-    <p>היום ניקח אפליקציה שלמה (FinDash), נחקור אותה, נתקן בה באג ונפתח בה פיצ'ר - <strong>הכל דרך agents ב-Cursor</strong>. המטרה: לחוות זרימת עבודה אמיתית מקצה לקצה, בדיוק כמו בעבודה היומיומית.</p>
+    <p>היום ניקח אפליקציה שלמה (FinDash), נחקור אותה, נתקן בה באגים ונפתח בה פיצ'ר - <strong>הכל דרך agents ב-Cursor</strong>. המטרה: לחוות זרימת עבודה אמיתית מקצה לקצה, בדיוק כמו בעבודה היומיומית.</p>
 
     <h4>כלל הזהב</h4>
     <p><strong>כל פעולה נעשית דרך ה-agent ב-Cursor.</strong> לא כותבים קוד ידנית, לא מריצים פקודות ידנית בטרמינל שמחוץ ל-Cursor. אתם המנהלים - ה-agent הוא המפתח. אתם מגדירים מטרה, נותנים Context, קוראים ומאשרים.</p>
@@ -765,17 +812,18 @@ td code, p code, li code {
         <tr><th>שלב</th><th>שם</th><th>מה עושים</th></tr>
       </thead>
       <tbody>
-        <tr><td>0</td><td><a href="#ex2-00">הכנה</a></td><td>פתיחת Cursor, התחברות ל-GitHub/Azure</td></tr>
-        <tr><td>1</td><td><a href="#ex2-01">Clone מ-GitHub</a></td><td>משיכת ה-repo מ-GitHub עם agent</td></tr>
+        <tr><td>0</td><td><a href="#ex2-00">הכנה</a></td><td>פתיחת Cursor; הכנה ל-PAT/גישת ADO (MCP בשלבים 1 ו-5)</td></tr>
+        <tr><td>1</td><td><a href="#ex2-01">Clone מ-GitHub</a></td><td>הגדרת GitHub MCP, ואז clone עם agent</td></tr>
         <tr><td>2</td><td><a href="#ex2-02">ארכיטקטורה</a></td><td>חקירת האפליקציה ולימוד הארכיטקטורה</td></tr>
-        <tr><td>3</td><td><a href="#ex2-03">תיקון באג</a></td><td>מציאה ותיקון של באג</td></tr>
-        <tr><td>4</td><td><a href="#ex2-04">Work Item</a></td><td>משיכת ה-Work Item מ-Azure DevOps</td></tr>
-        <tr><td>5</td><td><a href="#ex2-05">מימוש פיצ'ר</a></td><td>מימוש הפיצ'ר</td></tr>
-        <tr><td>6</td><td><a href="#ex2-06">שיפור יומיומי</a></td><td>חצי שני: שפר משימה יומיומית שלך</td></tr>
+        <tr><td>3</td><td><a href="#ex2-03">תיקון באג</a></td><td>מציאה ותיקון של באג (חישוב יתרה)</td></tr>
+        <tr><td>4</td><td><a href="#ex2-04">באג Cache</a></td><td>באג שדורש לוגים והרצה (יתרה לא מתעדכנת)</td></tr>
+        <tr><td>5</td><td><a href="#ex2-05">Work Item</a></td><td>הגדרת Azure DevOps MCP, ואז משיכת Work Item</td></tr>
+        <tr><td>6</td><td><a href="#ex2-06">מימוש פיצ'ר</a></td><td>מימוש הפיצ'ר</td></tr>
+        <tr><td>7</td><td><a href="#ex2-07">שיפור יומיומי</a></td><td>חצי שני: שפר משימה יומיומית שלך</td></tr>
       </tbody>
     </table>
 
-    <h4>טיפים כלליים (מיום 1)</h4>
+    <h4>טיפים כלליים (מתרגיל 1)</h4>
     <ul>
       <li><strong>Context זה הכל</strong> - צרפו קבצים רלוונטיים, הצביעו על מיקומים ספציפיים.</li>
       <li><strong>תנו ל-agent לאמת</strong> - שיריץ את השרת/הטסטים, לא רק "יטען".</li>
@@ -783,10 +831,10 @@ td code, p code, li code {
       <li><strong>עבדו בצעדים</strong> - משימה גדולה = כמה צעדים קטנים עם בדיקות ביניים.</li>
     </ul>
 
-    <h4>מה צריך מהמדריך לפני שמתחילים</h4>
+    <h4>קישורים להתחלה</h4>
     <ul>
-      <li>כתובת repo <strong>FinDash</strong> ב-GitHub (לשלב 1).</li>
-      <li>קישור ל-<strong>Work Item</strong> ב-Azure DevOps (לשלב 4).</li>
+      <li>Repo <strong>FinDash</strong> (לשלב 1): <a class="en" href="https://github.com/maorbarak100-creator/findash" target="_blank" rel="noopener">https://github.com/maorbarak100-creator/findash</a></li>
+      <li>קישור ל-<strong>Work Item</strong> ב-Azure DevOps (לשלב 5) - מהמדריך.</li>
     </ul>
     <p>בהצלחה. מתחילים מ-<a href="#ex2-00">שלב 0 - הכנה</a>.</p>
   </section>
@@ -806,8 +854,8 @@ td code, p code, li code {
       <li><strong>Cursor מותקן ופתוח.</strong></li>
       <li><strong>Node.js מותקן</strong> (גרסה 18 ומעלה). בדקו: פתחו טרמינל ב-Cursor והריצו <code>node --version</code>.</li>
       <li><strong>Git מותקן ומוגדר</strong> עם שם ואימייל.</li>
-      <li><strong>גישה ל-GitHub</strong> - הכתובת של ה-repo שהמדריך שיתף.</li>
-      <li><strong>גישה ל-Azure DevOps</strong> - קישור ל-Board/Work Item שהמדריך יצר.</li>
+      <li><strong>גישה ל-GitHub</strong> - repo של FinDash: <span class="en">https://github.com/maorbarak100-creator/findash</span>. בשלב 1 תגדירו גם <span class="en">GitHub MCP</span> (נדרש PAT).</li>
+      <li><strong>גישה ל-Azure DevOps</strong> - קישור ל-Board/Work Item שהמדריך יצר. בשלב 5 תגדירו <span class="en">Azure DevOps MCP</span> (שם ארגון + הרשאות).</li>
     </ol>
 
     <h4>בדיקת מוכנות</h4>
@@ -815,10 +863,11 @@ td code, p code, li code {
       <li>פתחו את חלונית ה-Agent (ברירת מחדל: <span class="en">Ctrl+I</span>).</li>
       <li>ודאו שהמצב הוא <strong>Agent</strong> (ולא Ask/Chat בלבד).</li>
       <li>בחרו תיקייה ריקה שתשמש לעבודה היום (למשל <code>C:\work\findash</code>).</li>
+      <li>הכינו מראש: אפשרות ליצור GitHub PAT, וגישה לארגון ADO שהמדריך יציין.</li>
     </ul>
 
     <h4>תזכורת חשובה</h4>
-    <p>מהרגע הזה - <strong>כל דבר עובר דרך ה-agent</strong>. גם פקודות git, גם הרצת השרת, גם עריכת קוד. זה בדיוק העניין של היום.</p>
+    <p>מהרגע הזה - <strong>כל דבר עובר דרך ה-agent</strong>. גם פקודות git, גם הרצת השרת, גם עריכת קוד. בשלבים 1 ו-5 תוסיפו גם כלים חיצוניים דרך <span class="en">MCP</span>.</p>
     <p class="next">מוכנים? עברו ל-<a href="#ex2-01">שלב 1 - Clone מ-GitHub</a>.</p>
   </section>
 
@@ -830,15 +879,48 @@ td code, p code, li code {
     <h3 class="title">שלב 1 - משיכת ה-Repo מ-GitHub (עם Agent)</h3>
 
     <h4>מטרה</h4>
-    <p>להביא את קוד האפליקציה מ-GitHub למחשב - באמצעות ה-agent, בלי להריץ פקודות ידנית.</p>
+    <p>להביא את קוד האפליקציה מ-GitHub למחשב - באמצעות ה-agent, בלי להריץ פקודות ידנית. קודם מחברים את <span class="en">GitHub MCP</span>, אחר כך משכפלים.</p>
 
-    <h4>שלבים</h4>
+    <div class="mcp-box">
+      <div class="label">MCP Setup</div>
+      <h4>הכנת MCP: GitHub</h4>
+      <p><span class="en">MCP</span> מחבר את Cursor ל-GitHub ככלי חיצוני (אותה לולאת tool calling, מעבר לכלים המובנים). בלי זה ה-agent רואה בעיקר את הקבצים המקומיים.</p>
+      <ol>
+        <li>צרו <span class="en">Personal Access Token (PAT)</span> ב-GitHub:
+          <a class="en" href="https://github.com/settings/tokens" target="_blank" rel="noopener">https://github.com/settings/tokens</a>
+          (Classic: scope מינימלי <code>repo</code> / גישה לקריאה ל-repos. אל תשתפו את הטוקן עם אף אחד.)</li>
+        <li>ב-Cursor: <span class="en">Settings → Tools &amp; MCP → New MCP Server</span> (או ערכו את הקובץ הגלובלי
+          <code class="en">%USERPROFILE%\.cursor\mcp.json</code> ב-Windows /
+          <code class="en">~/.cursor/mcp.json</code> ב-Mac/Linux).</li>
+        <li>הוסיפו (או המיזגו) את ההגדרה הבאה. החליפו את <code>YOUR_GITHUB_PAT</code> בטוקן האמיתי שלכם:</li>
+      </ol>
+<pre>{
+  "mcpServers": {
+    "github": {
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer YOUR_GITHUB_PAT"
+      }
+    }
+  }
+}</pre>
+      <ol start="4">
+        <li>שמרו את הקובץ, ואז <strong>Restart</strong> ל-Cursor (או <span class="en">Developer: Reload Window</span>).</li>
+        <li>ודאו ב-<span class="en">Settings → Tools &amp; MCP</span> שיש נקודה ירוקה ליד <code>github</code>.</li>
+        <li>בדיקת עשן בחלונית Agent:
+          <blockquote><p>"האם כלי GitHub MCP זמינים? תאר לי בקצרה את ה-repo <code>maorbarak100-creator/findash</code>."</p></blockquote>
+        </li>
+      </ol>
+      <p class="warn"><strong>אבטחה:</strong> אל תדביקו PAT ב-chat, ב-commit, או ב-repo של ההדרכה. רק בקונפיג המקומי של Cursor.</p>
+    </div>
+
+    <h4>שלבים (Clone + Setup)</h4>
     <ol>
-      <li>פתחו את חלונית ה-Agent.</li>
-      <li>בקשו מה-agent למשוך את ה-repo. לדוגמה (החליפו לכתובת האמיתית שהמדריך נתן):
-        <blockquote><p>"שכפל (clone) את ה-repo מהכתובת <code>https://github.com/&lt;org&gt;/findash</code> לתיקייה הנוכחית, ולאחר מכן פתח אותה."</p></blockquote>
+      <li>פתחו את חלונית ה-Agent (מצב <strong>Agent</strong>).</li>
+      <li>בקשו מה-agent לאמת הקשר מ-GitHub ואז לשכפל:
+        <blockquote><p>"בעזרת GitHub MCP אמת שה-repo <code>maorbarak100-creator/findash</code> קיים, אחר כך שכפל (clone) אותו מהכתובת <code>https://github.com/maorbarak100-creator/findash</code> לתיקייה הנוכחית, ופתח אותה."</p></blockquote>
       </li>
-      <li>תנו ל-agent להריץ את פקודת ה-<code>git clone</code> בטרמינל. שימו לב איך הוא מדווח על ההצלחה.</li>
+      <li>תנו ל-agent להריץ את <code>git clone</code> בטרמינל. שימו לב לדיווח על ההצלחה.</li>
       <li>בקשו מה-agent להתקין את התלויות:
         <blockquote><p>"התקן את התלויות של ה-backend ושל ה-frontend."</p></blockquote>
       </li>
@@ -850,13 +932,15 @@ td code, p code, li code {
 
     <h4>נקודות לתשומת לב</h4>
     <ul>
-      <li>אם ה-clone נכשל - בדקו את הכתובת ואת ההרשאות (ייתכן שצריך התחברות ל-GitHub).</li>
+      <li>אם ה-MCP לא עולה (חומה / מדיניות ארגון): המשיכו עם clone דרך הטרמינל בלבד, והשלימו את שאר השלב. תעדו לעצמכם מה חסם את ה-MCP.</li>
+      <li>אם ה-clone נכשל: בדקו את הכתובת ואת ההרשאות ב-GitHub.</li>
       <li>שימו לב שה-agent מזהה שיש שתי תיקיות (<code>backend</code>, <code>frontend</code>) וכל אחת דורשת <code>npm install</code> נפרד. אם לא - הזכירו לו.</li>
     </ul>
 
     <div class="takeaway">
       <div class="label">מה למדנו</div>
       <ul>
+        <li><span class="en">MCP</span> מרחיב את לולאת ה-tools מעבר לכלים המובנים של ה-harness (כאן: GitHub).</li>
         <li>ה-agent יכול לנהל פעולות git ותפעול (setup) - לא רק לכתוב קוד.</li>
         <li>כבר בשלב הזה אנחנו נותנים לו לאמת שהאפליקציה עובדת (Tool calling).</li>
       </ul>
@@ -959,7 +1043,7 @@ td code, p code, li code {
         <li>הוספת טסט הופכת את התיקון לקבוע.</li>
       </ul>
     </div>
-    <p class="next">עברו ל-<a href="#ex2-04">שלב 4 - Work Item</a>.</p>
+    <p class="next">עברו ל-<a href="#ex2-04">שלב 4 - באג Cache</a>.</p>
   </section>
 
   <!-- EX2-04 -->
@@ -967,24 +1051,104 @@ td code, p code, li code {
     <div class="meta">
       <span class="badge">שלב 4</span>
     </div>
-    <h3 class="title">שלב 4 - משיכת ה-Work Item מ-Azure DevOps</h3>
+    <h3 class="title">שלב 4 - באג שדורש לוגים והרצה (Cache)</h3>
 
-    <h4>מטרה</h4>
-    <p>לקבל את דרישת הפיצ'ר ממערכת ניהול המשימות (Azure DevOps), בדיוק כמו בעבודה אמיתית - ולתרגם אותה לתוכנית עבודה עם ה-agent.</p>
+    <h4>הרקע (דיווח באג)</h4>
+    <blockquote>
+      <p><strong>דיווח מלקוח:</strong> "הוספתי הפקדה לחשבון. רשימת התנועות התעדכנה מיד, אבל היתרה נשארה כמו קודם. רק אחרי שאני מפעיל מחדש את השרת היתרה מתעדכנת. משהו לא תקין."</p>
+    </blockquote>
+    <p>זה באג אחר משלב 3. חישוב היתרה על נתוני ה-seed כבר אמור להיות תקין אחרי התיקון הקודם. כאן הבעיה מופיעה רק אחרי <strong>כתיבה ואז קריאה באותו תהליך שרת</strong> (בלי restart).</p>
+    <p><strong>כלל לשלב הזה:</strong> אל תתקנו עדיין. קודם תשחזרו, תוסיפו לוגים, ותסבירו את ה-root cause מתוך הראיות.</p>
 
     <h4>שלבים</h4>
 
-    <h4>א. איתור המשימה</h4>
+    <h4>א. שחזור הבעיה (בלי תיקון)</h4>
+    <blockquote><p>"בלי לשנות קוד עדיין: קרא את יתרת acc-1001 (GET balance), אחר כך הוסף הפקדה של 500 דרך POST /api/accounts/acc-1001/transactions, ואז קרא שוב balance וגם transactions. השווה: האם היתרה עלתה? האם transactionCount תואם לאורך רשימת התנועות? חשוב: אל תפעיל מחדש את השרת בין הבדיקות."</p></blockquote>
+    <p>תנו ל-agent להריץ את הרצף בפועל (curl / fetch מול השרת שכבר רץ).</p>
+
+    <h4>ב. Instrumentation - הוספת לוגים</h4>
+    <blockquote><p>"עדיין בלי לתקן. הוסף loglines זמניים שמראים: האם חזרה תשובה מ-cache או מחישוב חדש, את ערך ה-balance, את transactionCount, ואת מספר התנועות ברשימה. שחזר את אותו רצף (GET → POST → GET) והצג לי את הלוגים."</p></blockquote>
+    <p>קראו את הלוגים יחד עם ה-agent. מה הראיות אומרות?</p>
+
+    <h4>ג. הסבר לפני תיקון</h4>
+    <blockquote><p>"מה ה-root cause לפי הלוגים? הסבר לי לפני שאתה מתקן."</p></blockquote>
+    <p>עצרו וקראו את ההסבר. האם הוא מתבסס על הראיות (cache hit אחרי POST, txnCount ישן מול רשימה חדשה) ולא רק על ניחוש מקריאת הקוד?</p>
+
+    <h4>ד. תיקון</h4>
+    <blockquote><p>"תקן כך שאחרי הוספת תנועה היתרה תתעדכן בלי restart. שמור על סגנון הקוד הקיים. אחרי התיקון הסר את הלוגים הזמניים."</p></blockquote>
+    <p>קראו את ה-diff לפני אישור. ודאו שהתיקון הוא invalidation (או עדכון) של ה-cache בנתיב הכתיבה, ולא שינוי מחדש של נוסחת החישוב משלב 3.</p>
+
+    <h4>ה. אימות</h4>
+    <blockquote><p>"בלי להפעיל מחדש את השרת: הוסף שוב הפקדה, קרא balance ו-transactions, ואמת שהיתרה ו-transactionCount מעודכנים."</p></blockquote>
+
+    <h4>ו. רשת ביטחון</h4>
+    <blockquote><p>"כתוב טסט ל-backend שמוסיף תנועה לחשבון ואז בודק שהיתרה משקפת את התנועה החדשה (בלי להניח restart). הרץ את הטסטים."</p></blockquote>
+
+    <h4>משימת סגירה (Git)</h4>
+    <blockquote><p>"צור branch בשם <code>fix/balance-cache-invalidation</code>, בצע commit עם הודעה ברורה בעברית שמתארת את התיקון, ודחוף אותו."</p></blockquote>
+
+    <div class="takeaway">
+      <div class="label">מה למדנו</div>
+      <ul>
+        <li>קריאת קוד נותנת השערות. לוגים + הרצה נותנים ראיות.</li>
+        <li>באגים מסוג cache / stale state נראים "תקינים" ב-static analysis, ונחשפים רק ברצף write-then-read.</li>
+        <li>ה-agent חזק כשהוא סוגר לולאה מול המערכת הרצה, לא כשהוא רק מנחש מהקוד.</li>
+      </ul>
+    </div>
+    <p class="next">עברו ל-<a href="#ex2-05">שלב 5 - Work Item</a>.</p>
+  </section>
+
+  <!-- EX2-05 -->
+  <section class="card" id="ex2-05">
+    <div class="meta">
+      <span class="badge">שלב 5</span>
+    </div>
+    <h3 class="title">שלב 5 - משיכת ה-Work Item מ-Azure DevOps</h3>
+
+    <h4>מטרה</h4>
+    <p>לקבל את דרישת הפיצ'ר ממערכת ניהול המשימות (Azure DevOps) דרך <span class="en">MCP</span>, ואז לתרגם אותה לתוכנית עבודה עם ה-agent, בלי לכתוב קוד עדיין.</p>
+
+    <div class="mcp-box">
+      <div class="label">MCP Setup</div>
+      <h4>הכנת MCP: Azure DevOps</h4>
+      <p>כאן מחברים את Cursor ל-Azure DevOps כדי שה-agent יוכל למשוך Work Items ישירות (במקום להעתיק ידנית מהדפדפן).</p>
+      <ol>
+        <li>בקשו מהמדריך את שם הארגון ב-ADO (<code>YOUR_ADO_ORG</code>) ואת מזהה / קישור ה-Work Item לתרגיל.</li>
+        <li>ודאו שיש לכם גישה לארגון (דפדפן נפתח ל-<span class="en">dev.azure.com</span>). לפי מדיניות הארגון: התחברות עם Microsoft Entra, או <code>az login</code>, או PAT ל-ADO.</li>
+        <li>ב-Cursor: <span class="en">Settings → Tools &amp; MCP → New MCP Server</span>, או צרו/ערכו
+          <code class="en">.cursor/mcp.json</code> ב-workspace (או בקובץ הגלובלי <code class="en">%USERPROFILE%\.cursor\mcp.json</code>).</li>
+        <li>הוסיפו את ההגדרה הבאה. החליפו את <code>YOUR_ADO_ORG</code> בשם הארגון האמיתי:</li>
+      </ol>
+<pre>{
+  "mcpServers": {
+    "ado": {
+      "command": "npx",
+      "args": ["-y", "@azure-devops/mcp", "YOUR_ADO_ORG"]
+    }
+  }
+}</pre>
+      <ol start="5">
+        <li>שמרו, ואז Restart / Reload ל-Cursor. אשרו <strong>Enable</strong> כש-Cursor מזהה את השרת.</li>
+        <li>ודאו נקודה ירוקה ליד <code>ado</code> ב-<span class="en">Tools &amp; MCP</span>.</li>
+        <li>בדיקת עשן:
+          <blockquote><p>"האם כלי Azure DevOps MCP זמינים? רשום לי בקצרה מה אתה יכול לעשות מול Work Items."</p></blockquote>
+        </li>
+      </ol>
+      <p class="warn"><strong>אבטחה:</strong> אל תשמרו PAT של ADO בתוך repo משותף. אם הארגון דורש PAT, השתמשו במשתנה סביבה מקומי לפי הנחיות המדריך, לא בקובץ שמתועד ל-git.</p>
+    </div>
+
+    <h4>שלבים</h4>
+
+    <h4>א. משיכת ה-Work Item דרך MCP</h4>
     <ol>
-      <li>פתחו את לוח ה-Azure DevOps (הקישור שהמדריך שיתף).</li>
-      <li>מצאו את ה-Work Item: <strong>"הוספת סיכום חודשי של הכנסות מול הוצאות למסך החשבון"</strong>.</li>
-      <li>קראו את התיאור ואת תנאי הקבלה (Acceptance Criteria).</li>
+      <li>קחו מהמדריך את מזהה ה-Work Item (או את הכותרת המדויקת): <strong>"הוספת סיכום חודשי של הכנסות מול הוצאות למסך החשבון"</strong>.</li>
+      <li>בקשו מה-agent:
+        <blockquote><p>"משוך מ-Azure DevOps (דרך MCP) את ה-Work Item של הסיכום החודשי. הצג לי את התיאור ואת תנאי הקבלה (Acceptance Criteria), ואז הצע תוכנית מימוש קצרה: מה ב-backend, מה ב-frontend, ובאיזה סדר. אל תכתוב קוד עדיין."</p></blockquote>
+      </li>
     </ol>
 
-    <h4>ב. העברת ההקשר ל-Agent</h4>
-    <p>העתיקו את התיאור ותנאי הקבלה של ה-Work Item, והדביקו אותם ל-agent:</p>
-    <blockquote><p>"זו דרישת פיצ'ר מ-Azure DevOps. קרא אותה והצע לי תוכנית מימוש קצרה - מה צריך לשנות ב-backend, מה ב-frontend, ובאיזה סדר. אל תכתוב קוד עדיין."</p></blockquote>
-    <blockquote><p>טיפ: אם בארגון שלכם מוגדר חיבור MCP ל-Azure DevOps ב-Cursor, אפשר לבקש מה-agent למשוך את ה-Work Item ישירות לפי מזהה, במקום להעתיק ידנית. שאלו את המדריך אם זה זמין.</p></blockquote>
+    <h4>ב. Fallback (אם MCP חסום)</h4>
+    <p>אם ה-MCP לא עובד בסביבה הארגונית: פתחו את הלוח בדפדפן, העתיקו ידנית את התיאור ואת Acceptance Criteria, והדביקו ל-agent עם אותה בקשה לתוכנית (בלי קוד).</p>
 
     <h4>ג. אישור התוכנית</h4>
     <p>קראו את התוכנית שה-agent הציע. האם היא מכסה את כל תנאי הקבלה? חדדו אם צריך:</p>
@@ -993,19 +1157,20 @@ td code, p code, li code {
     <div class="takeaway">
       <div class="label">מה למדנו</div>
       <ul>
+        <li><span class="en">MCP</span> ל-ADO מחליף copy-paste: הדרישה נכנסת ל-context ישירות מהמערכת הארגונית.</li>
         <li>דרישה טובה (עם Acceptance Criteria) = Context מצוין ל-agent.</li>
         <li>לבקש תוכנית <strong>לפני</strong> קוד = שליטה טובה יותר בתוצאה.</li>
       </ul>
     </div>
-    <p class="next">עברו ל-<a href="#ex2-05">שלב 5 - מימוש פיצ'ר</a>.</p>
+    <p class="next">עברו ל-<a href="#ex2-06">שלב 6 - מימוש פיצ'ר</a>.</p>
   </section>
 
-  <!-- EX2-05 -->
-  <section class="card" id="ex2-05">
+  <!-- EX2-06 -->
+  <section class="card" id="ex2-06">
     <div class="meta">
-      <span class="badge">שלב 5</span>
+      <span class="badge">שלב 6</span>
     </div>
-    <h3 class="title">שלב 5 - מימוש הפיצ'ר</h3>
+    <h3 class="title">שלב 6 - מימוש הפיצ'ר</h3>
 
     <h4>מטרה</h4>
     <p>לממש את פיצ'ר "הסיכום החודשי" מקצה לקצה (backend + frontend), לפי תנאי הקבלה, עם ה-agent.</p>
@@ -1056,19 +1221,19 @@ td code, p code, li code {
         <li>סגירת המעגל: מ-Work Item ועד Pull Request.</li>
       </ul>
     </div>
-    <p class="next">מי שסיים - עברו לחצי השני: <a href="#ex2-06">שלב 6 - שיפור יומיומי</a>.</p>
+    <p class="next">מי שסיים - עברו לחצי השני: <a href="#ex2-07">שלב 7 - שיפור יומיומי</a>.</p>
   </section>
 
-  <!-- EX2-06 -->
-  <section class="card" id="ex2-06">
+  <!-- EX2-07 -->
+  <section class="card" id="ex2-07">
     <div class="meta">
-      <span class="badge">שלב 6</span>
+      <span class="badge">שלב 7</span>
     </div>
-    <h3 class="title">שלב 6 (חצי שני) - שפר משימה יומיומית שלך</h3>
+    <h3 class="title">שלב 7 (חצי שני) - שפר משימה יומיומית שלך</h3>
 
     <h4>מטרה</h4>
     <p>לקחת את מה שלמדנו ולהפעיל אותו על <strong>הבעיות האמיתיות שלכם</strong>. כל אחד בוחר משימה או תהליך שחוזר על עצמו בעבודה היומיומית, ומשפר אותו בעזרת agent.</p>
-    <p>זהו הבסיס להצגה למנהלים ביום 3.</p>
+    <p>זהו הבסיס להצגה למנהלים בהמשך התוכנית.</p>
 
     <h4>שלב א' - בחירת משימה</h4>
     <p>חשבו על משהו מהעבודה שלכם שהוא: חוזר, מייגע, גוזל זמן, או מועד לטעויות. דוגמאות:</p>
@@ -1090,7 +1255,7 @@ td code, p code, li code {
     <p>בנו פתרון. אפשרויות:</p>
     <ul>
       <li><strong>אוטומציה:</strong> בקשו מה-agent לכתוב סקריפט/כלי שמבצע את המשימה.</li>
-      <li><strong>Rules / AGENTS.md:</strong> הגדירו כללים שיחסכו לכם חזרה על הנחיות (כמו בתרגיל 6 של יום 1).</li>
+      <li><strong>Rules / AGENTS.md:</strong> הגדירו כללים שיחסכו לכם חזרה על הנחיות (כמו בתרגיל 6 בתרגיל 1).</li>
       <li><strong>Prompt חוזר:</strong> נסחו prompt-תבנית שתשמש אתכם שוב ושוב למשימה הזו.</li>
       <li><strong>תהליך:</strong> הגדירו זרימת עבודה חדשה עם ה-agent שמקצרת את המשימה.</li>
     </ul>
@@ -1103,7 +1268,7 @@ td code, p code, li code {
       <li>מה עוד אפשר לשפר בהמשך?</li>
     </ul>
 
-    <h4>שלב ה' - הכנה ליום 3</h4>
+    <h4>שלב ה' - הכנה להצגה למנהלים</h4>
     <p>הכינו נקודות קצרות להצגה למנהלים:</p>
     <ul>
       <li>מה המשימה שבחרתם ולמה.</li>
